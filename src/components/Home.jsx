@@ -2,14 +2,13 @@ import React from "react";
 import '../App.css';
 import Group from "./Group";
 import User from "./User";
-import GroupDebt from "./GroupDebt";
 import UserDebt from "./UserDebt";
 import Payment from "./Payment";
 
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 // import React, {useState} from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 
 function Home (){
@@ -21,54 +20,49 @@ function Home (){
 
         <div className="App">
             <Router>
+                <div className="container">
+                    <div className="wrapper">
+                        <div className="left">
+                            <h1 Navigate >Split Pay App</h1>
+                            <Link to="/">Split Pay App</Link>
+                        </div>
 
-             <header>
+                        <div className="center">
+                            <div className="centermenu">
+                                <Link to="/group">Group</Link>
+                            </div>
+                            <div className="centermenu">
+                                <Link to="/user">User</Link>
+                            </div>
+                            
+                            <div className="centermenu">
+                                <Link to="/userdebt">User Debts</Link>
+                            </div>
+                            
+                            <div className="centermenu">
+                            <Link to="/payment">Payments</Link>
+                            </div>       
+                        </div>  
 
-            <h1> Split Pay App</h1>
-             
-                <nav>
-                    <Link to="/">Home</Link>
-                    {' '} | {' '}
-                    <Link to="/group">Group</Link>
-                    {' '} | {' '}
-                    <Link to="/user">User</Link>
-                    {' '} | {' '}
-                    <Link to="/groupdebt">Group Debts</Link>
-                    {' '} | {' '}
-                    <Link to="/userdebt">User Debts</Link>
-                    {' '} | {' '}
-                    <Link to="/payment">Payments</Link>
-                </nav>
-            </header> 
-
-
-
-                <Routes>
-                   {/* <Route path="/" >
-                         <Home/>
-                    </Route>  */}
-                    <Route path="/user" >
-                         <User/>
-                    </Route> 
-                    <Route path="/group" >
-                         <Group/>
-                    </Route> 
-                    <Route path="/groupdebt" >
-                         <GroupDebt/>
-                    </Route> 
-                    <Route path="/userdebt" >
-                         <UserDebt/>
-                    </Route> 
-                    <Route path="/payment" >
-                         <Payment/>
-                    </Route>  
-                </Routes>
-
+                        <div className="right">
+                            <div className="menu">SIGN UP</div>
+                            <div className="menu">SIGN IN</div>
+                        </div>
+                    </div>
+                </div>
 
         
+                <Routes>
+                    <Route path="/user" element={<User/>} />
+                    
+                    <Route path="/group" element={<Group/>} />
+                                       
+                    <Route path="/userdebt" element={<UserDebt/>} />
+                                          
+                    <Route path="/payment" element={<Payment/>} />                            
+                </Routes>  
+        
             </Router>
-
-
         </div>
 
 
