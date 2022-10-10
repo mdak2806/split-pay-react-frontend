@@ -24,13 +24,13 @@ function Home ( props ){
     // useEffect not usedEffect (might cause errors down the line)
     useEffect( () => {
         console.log('Component Mounting!');
-        setUser();
-    });
+        fetchUser();
+    }, []);
 
     // function to set current user
-    function setUser () {
+    function fetchUser () {
         let token = "Bearer " + localStorage.getItem("jwt");
-        axios.get(`${BASE_URL}/users/current`, {
+        axios.get(`${BASE_URL}/current_user`, {
           headers: {
             'Authorization': token
           }
@@ -87,7 +87,7 @@ function Home ( props ){
                             (
                             <div className="right">
                                 <div className="menu">
-                                <Link to="/myprofile">Profile</Link>
+                                <Link to="/profile">Profile</Link>
                                 </div>
     
                                 <div className="menu">
@@ -116,19 +116,19 @@ function Home ( props ){
 
         
                 <Routes>
-                    <Route path="/user" element={<User/>} />
+                    <Route path="/user" element={<User user={currentUser}/>} />
                     
-                    <Route path="/group" element={<Group/>} />
+                    <Route path="/group" element={<Group user={currentUser}/>} />
                                        
-                    <Route path="/userdebt" element={<UserDebt/>} />
+                    <Route path="/userdebt" element={<UserDebt user={currentUser}/>} />
                                           
-                    <Route path="/payment" element={<Payment/>} />     
+                    <Route path="/payment" element={<Payment user={currentUser}/>} />     
 
                     <Route path="/login" element={<Login/>} />    
 
-                    <Route path="/signup" element={<SignUp/>} />    
+                    {/* <Route path="/signup" element={<SignUp/>} />     */}
 
-                    <Route path="/profile" element={<MyProfile/>} />                            
+                    <Route path="/profile" element={<MyProfile user={currentUser}/>} />                            
                 </Routes>  
         
             </Router>
