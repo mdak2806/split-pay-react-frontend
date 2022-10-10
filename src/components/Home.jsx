@@ -7,7 +7,7 @@ import UserDebt from "./UserDebt";
 import Payment from "./Payment";
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 // import React, {useState} from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 
 function Home (){
@@ -41,26 +41,24 @@ function Home (){
 
 
         
-                {/* <Routes>
-                   <Route path="/" >
-                         <Home/>
-                    </Route> 
-                    <Route path="/user" >
-                         <User/>
-                    </Route> 
-                    <Route path="/group" >
-                         <Group/>
-                    </Route> 
-                    <Route path="/groupdebt" >
-                         <GroupDebt/>
-                    </Route> 
-                    <Route path="/userdebt" >
-                         <UserDebt/>
-                    </Route> 
-                    <Route path="/payment" >
-                         <Payment/>
-                    </Route>  
-                </Routes> */}
+                <Routes>
+                   {/* <Route path="/" element={ <Home/>}/>  */}
+                    
+                    <Route path="/user" element={<User/>} />
+                    
+                    <Route path="/group" element={<Group/>} />
+  
+                    
+                    <Route path="/groupdebt" element={ <GroupDebt/>} />
+                        
+                    
+                    <Route path="/userdebt" element={<UserDebt/>} />
+                         
+                    
+                    <Route path="/payment" element={<Payment/>} />
+                         
+                     
+                </Routes>  
 
 
         
