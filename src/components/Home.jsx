@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { request } from '../utils/request'
 
+import { ArrowLeftOutlined, Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 
 
@@ -68,7 +69,7 @@ function Home ( props ){
                             {/* <h1 Navigate >Split Pay App</h1> */}
                             <Link to="/">Split Pay App</Link>
                         </div>
-
+                        <div className="centercontainer">
                         <div className="center">
                             <div className="centermenu">
                                 <Link to="/group">Group</Link>
@@ -84,6 +85,7 @@ function Home ( props ){
                             <div className="centermenu">
                             <Link to="/payment">Payments</Link>
                             </div>       
+                        </div>
                         </div>  
                         {
                             localStorage.getItem("jwt") !== null
@@ -116,7 +118,11 @@ function Home ( props ){
                         }
                      
                     </div>
-                </div>
+                </div>  {/* container */}
+
+
+
+               
 
         
                 <Routes>
@@ -144,8 +150,51 @@ function Home ( props ){
 
                                             
                 </Routes>  
+
+                <div className="sliderContainer">
+                    {/* <img src="https://assets-global.website-files.com/602b4f8c33acd255f0f81c8f/62301d1547933a7c8e4e054b_Mr%20Yum%20-%20Split%20%26%20Pay%20-%201600%20x%20900%20-%20Blog%20Header.jpg"></img> */}
+
+
+                </div>
+
+
+                <div className="footercontainer">
+                    <div className="footerLeft">
+                        <h1>Split Pay</h1>
+                        <div className="footerDesc">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or rendomised words which don't look even slightly believable.
+                        </div>
+                        <div className="socialContainer">
+                            <div className="facebook">
+                                <Facebook />
+                            </div>
+                            <div className="ins">
+                                <Instagram />
+                            </div>
+                            <div className="twitter">
+                                <Twitter />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footerCenter">
+                        <h1>Useful Links</h1>
+                        <div className="footerLinks">
+                            <div className="linkitem">Home</div>
+                            <div className="linkitem">Group</div>
+                            <div className="linkitem">My profile</div>
+                            <div className="linkitem">Terms</div>
+                        </div>
+                    </div>
+                    <div className="footerRight">
+                        <h1>Contact</h1>
+                        <div className="contactItem">221B Baker Street, London</div>
+                        <div className="contactItem">+1 234 56 78</div>
+                        <div className="contactItem">contact@splitpay.com</div>
+                    </div>
+                </div>
         
             </Router>
+
         </div>
 
 
