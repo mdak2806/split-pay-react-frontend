@@ -121,19 +121,19 @@ function Home ( props ){
 
         
                 <Routes>
-                    <Route path="/user" element={<User user={currentUser}/>} />
+                    <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
-                    <Route path="/group" element={<Group user={currentUser}/>} />
+                    <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
                                        
-                    <Route path="/userdebt" element={<UserDebt user={currentUser}/>} />
+                    <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
                                           
-                    <Route path="/payment" element={<Payment user={currentUser}/>} />     
+                    <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} />     
 
-                    <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser}/>} />    
+                    <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
 
-                    <Route path="/signup" element={<SignUp fetchUser={fetchUser} />} />    
+                    <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
 
-                    <Route path="/profile" element={<MyProfile user={currentUser}/>} />                            
+                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />                            
                 </Routes>  
         
             </Router>
