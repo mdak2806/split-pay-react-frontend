@@ -1,9 +1,10 @@
 import React from "react";
+import '../App.css';
 
 
 const User = () => {
     return (
-        <div>
+        <div className="content">
             Hello User
         </div>
     )

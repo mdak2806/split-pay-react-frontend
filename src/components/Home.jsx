@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import {useState, useEffect} from 'react';
 import axios from "axios";
 
+import '../App.css';
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 
@@ -29,19 +30,21 @@ function Home ( props ){
 
     // function to set current user
     function fetchUser () {
-        let token = "Bearer " + localStorage.getItem("jwt");
-        axios.get(`${BASE_URL}/current_user`, {
-          headers: {
-            'Authorization': token
-          }
-        })
-        .then(res => {
-
-            // TODO: BELOW MIGHT BE AN ERROR should be in object
-          setCurrentUser(res.data)
-            // this.setState({currentUser: res.data})
-        })
-        .catch(err => console.warn(err))
+        let token =  localStorage.getItem("jwt");
+        // truthy conditional check statement for the token and make sure its present
+        // i.e. the user is logged in (token present) 
+        if (token){
+            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+            axios.get(`${BASE_URL}/current_user`)
+            .then(res => {
+    
+                // TODO: BELOW MIGHT BE AN ERROR should be in object
+              setCurrentUser(res.data)
+                // this.setState({currentUser: res.data})
+            })
+            .catch(err => console.warn(err))
+        }
+      
     };
 
     // function to log-out user
@@ -124,9 +127,9 @@ function Home ( props ){
                                           
                     <Route path="/payment" element={<Payment user={currentUser}/>} />     
 
-                    <Route path="/login" element={<Login/>} />    
+                    <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser}/>} />    
 
-                    {/* <Route path="/signup" element={<SignUp/>} />     */}
+                    <Route path="/signup" element={<SignUp fetchUser={fetchUser} />} />    
 
                     <Route path="/profile" element={<MyProfile user={currentUser}/>} />                            
                 </Routes>  
