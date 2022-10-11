@@ -57,29 +57,28 @@ function Login ( props ){
 
     return(
 
-        <div className="content">
-        <form onSubmit={handleSubmit}>
-                <label>Login Form</label>
-                    <br/>
-                        <input
-                            onChange={handleInput}
-                            name="email"
-                            type="email"
-                            placeholder='Enter Email'
-                        />
-                    <br/>
-                        <input
-                            onChange={handleInput}
-                            name="password"
-                            type="password"
-                            placeholder='Enter Password'
-                        />
-                    <br/>
-                <button>Login</button>
-        </form>
+        <div className="container">
+          <div className="wrapper">
+            <div className="title">Login Form</div>
+              <form onSubmit={handleSubmit}>
+                      <input className="input"
+                onChange={handleInput}
+                name="email"
+                type="email"
+                placeholder='Enter Email'
+              />
+                      
+                      <input className="input"
+                onChange={handleInput}
+                name="password"
+                type="password"
+                placeholder='Enter Password'
+              />
+                    <button className="loginbutton">Login</button>
+            </form>
 
-
-        </div>
+      </div>
+      </div>
 
 
     )
