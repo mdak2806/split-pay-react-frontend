@@ -1,6 +1,7 @@
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const BASE_URL = 'http://localhost:3000';
 
@@ -8,7 +9,9 @@ function SignUp( props){
 
     const[name, setName] = useState('');
     const[email, setEmail] = useState('');
-    const [passwordDigest, setPasswordDigest] = useState('');
+    const [password, setPassword] = useState('');
+    const navigatePush = useNavigate();
+
 
       // handle typing in the form
       function handleInput (ev) {
@@ -26,10 +29,12 @@ function SignUp( props){
                 break;
 
             case 'password':
-                setPasswordDigest(ev.target.value)
+                setPassword(ev.target.value)
                 // console.log("password:", ev.target.value);
                 break;
                 default: console.log('sign in better please');
+
+                // TODO: change the console log to an error notification so the user can see its wrong
 
         } // end of Switch
 
@@ -42,36 +47,42 @@ function SignUp( props){
         // useEffect( () => {
         //     console.log('Component Mounting!');
         // }, []);
+        const request = {'name': name, 'email': email, 'password': password}
 
-        try{
+        // axios post new user
+
+        // try{
 
             //  setting new user details with states and posting to users
-            const submitNewUser = await axios.post(`
-            ${BASE_URL}/users`,{
-                name:name,
-                email:email, 
-                passwordDigest:passwordDigest
-            })
+            // const submitNewUser = await 
+            axios.post(`${BASE_URL}/signup`, request)
             .then( result => {
-                localStorage.setItem("jwt", result.data.token.token)
+                console.log('signup:', result.data);
 
-                console.log("jwt", result.data.token.token);
-                // set axios default headers to have an authorization key
-                axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
+                // set our local storage to have a json web token
+                // localStorage.setItem("jwt", result.data.token.token)
+
+                // console.log("jwt", result.data.token.token);
+                // // set axios default headers to have an authorization key
+                // axios.defaults.headers.common['Authorization'] = 'Bearer ' + result.data.token.token;
                 // call the function fetchUser that was passed in as a prop 
-                this.props.fetchUser();
+                props.fetchUser();
+                navigatePush('/profile');
 
                 // redirect 
 
 
             })
+            .catch(err => {
+                console.warn(err)
+            })
 
-        }
-        catch(err){
+        // }
+        // catch(err){
 
-            console.warn(err)
+        //     console.warn(err)
 
-        }
+        // }
 
         
 
@@ -101,8 +112,8 @@ function SignUp( props){
                 <br/>
                     <input
                     onChange={handleInput}
-                    name="passwordDigest"
-                    type="passwordDigest"
+                    name="password"
+                    type="password"
                     placeholder='Enter Password'
                     />
                 <br/>

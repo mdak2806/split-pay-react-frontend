@@ -22,6 +22,8 @@ function Login ( props ){
               break;
             case 'password':
               setPassword(ev.target.value)
+            default: return;
+            // TODO change the default to return a notification to the user that wrong login
           }
     }
 
@@ -57,24 +59,24 @@ function Login ( props ){
 
         <div className="content">
         <form onSubmit={handleSubmit}>
-        <label>Login Form</label>
-        <br/>
-        <input
-          onChange={handleInput}
-          name="email"
-          type="email"
-          placeholder='Enter Email'
-        />
-        <br/>
-        <input
-          onChange={handleInput}
-          name="password"
-          type="password"
-          placeholder='Enter Password'
-        />
-        <br/>
-        <button>Login</button>
-      </form>
+                <label>Login Form</label>
+                    <br/>
+                        <input
+                            onChange={handleInput}
+                            name="email"
+                            type="email"
+                            placeholder='Enter Email'
+                        />
+                    <br/>
+                        <input
+                            onChange={handleInput}
+                            name="password"
+                            type="password"
+                            placeholder='Enter Password'
+                        />
+                    <br/>
+                <button>Login</button>
+        </form>
 
 
         </div>

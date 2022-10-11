@@ -11,6 +11,7 @@ import {useState, useEffect} from 'react';
 import axios from "axios";
 
 import '../App.css';
+import { useNavigate } from "react-router-dom";
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 
@@ -21,7 +22,7 @@ let BASE_URL ='http://localhost:3000'
 function Home ( props ){
 
     const [currentUser, setCurrentUser] = useState(null);
-
+    // const navigatePush = useNavigate();
     // useEffect not usedEffect (might cause errors down the line)
     useEffect( () => {
         console.log('Component Mounting!');
@@ -49,9 +50,10 @@ function Home ( props ){
 
     // function to log-out user
     function handleLogOut (){
-        setCurrentUser(undefined)
+        setCurrentUser(null)
         localStorage.removeItem("jwt");
         axios.defaults.headers.common['Authorization'] = undefined;
+        // navigatePush('/home');
 
     }
 
