@@ -60,7 +60,7 @@ function SignUp( props){
                 console.log('signup:', result.data);
 
                 // set our local storage to have a json web token
-                // localStorage.setItem("jwt", result.data.token.token)
+                localStorage.setItem("jwt", result.data.token)
 
                 // console.log("jwt", result.data.token.token);
                 // // set axios default headers to have an authorization key
