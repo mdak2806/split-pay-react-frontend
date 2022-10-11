@@ -71,7 +71,7 @@ function Login ( props ){
                       <input className="logininput"
                 onChange={handleInput}
                 name="password"
-                type="password"
+                type="assword"
                 placeholder='Enter Password'
               />
                   <button className="loginbutton">Login</button>

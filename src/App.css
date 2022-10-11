@@ -47,7 +47,8 @@
 .logincontainer{
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://https://www.color-meanings.com/wp-content/uploads/2022/02/Purple-smoke-on-black-background.jpeg") center ;
+  /* background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://https://www.color-meanings.com/wp-content/uploads/2022/02/Purple-smoke-on-black-background.jpeg") center ; */
+  background-color: #242c50;
   background-size: cover;
   display: flex;
   align-items: center;
@@ -57,7 +58,7 @@
 .loginwrapper{
   width: 25%;
   padding: 20px;
-  background-color: white;
+  background-color: #1dc28d;
 }
 
 .logintitle{
@@ -78,8 +79,8 @@
   width: 40%;
   border: none;
   padding: 15px 20px;
-  background-color: black;
-  color: white;
+  background-color: white;
+  color: #1dc28d;
   cursor: pointer;
   margin-bottom: 10px;
 }

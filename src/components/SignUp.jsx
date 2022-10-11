@@ -91,39 +91,32 @@ function SignUp( props){
 
 
     return(
-
-        <div className="content">
-            <form onSubmit={handleSubmit}>
-                <label>Sign Up </label>
-                <br/>
-                    <input
+        <div className="logincontainer">
+            <div className="loginwrapper">
+                <div className="logintitle">Sign Up </div>
+                <form onSubmit={handleSubmit}>
+                    <input className="logininput"
                     onChange={handleInput}
                     name="name"
                     type="name"
                     placeholder='Enter Name'
                     />
-                <br/>
-                    <input
+                    <input className="logininput"
                     onChange={handleInput}
                     name="email"
                     type="email"
                     placeholder='Enter email'
                     />
-                <br/>
-                    <input
+                    <input className="logininput"
                     onChange={handleInput}
                     name="password"
                     type="password"
                     placeholder='Enter Password'
                     />
-                <br/>
-                <button>Sign Up</button>
-             </form>
-
-
+                    <button>Sign Up</button>
+                </form>
+           </div>
         </div>
-
-
     )
 
 
