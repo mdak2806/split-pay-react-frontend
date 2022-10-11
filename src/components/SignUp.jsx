@@ -55,12 +55,12 @@ function SignUp( props){
 
             //  setting new user details with states and posting to users
             // const submitNewUser = await 
-            axios.post(`${BASE_URL}/signup`, request)
+            await axios.post(`${BASE_URL}/signup`, request)
             .then( result => {
                 console.log('signup:', result.data);
 
                 // set our local storage to have a json web token
-                // localStorage.setItem("jwt", result.data.token.token)
+                localStorage.setItem("jwt", result.data.token)
 
                 // console.log("jwt", result.data.token.token);
                 // // set axios default headers to have an authorization key
