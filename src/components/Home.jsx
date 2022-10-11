@@ -8,6 +8,7 @@ import Login from './Login';
 import MyProfile from './MyProfile';
 import SignUp from './SignUp';
 import GroupPage from "./GroupPage";
+import PaymentPage from './PaymentPage';
 import {useState, useEffect} from 'react';
 
 import '../App.css';
@@ -135,6 +136,8 @@ function Home ( props ){
                     <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
                     
                     <Route path="/group/:id" element={<GroupPage user={currentUser} {...useState}/>}
+                    />
+                     <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
                     />
                                        
                     <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
