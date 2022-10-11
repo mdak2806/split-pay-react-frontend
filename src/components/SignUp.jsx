@@ -68,10 +68,7 @@ function SignUp( props){
                 // call the function fetchUser that was passed in as a prop 
                 props.fetchUser();
                 navigatePush('/profile');
-
                 // redirect 
-
-
             })
             .catch(err => {
                 console.warn(err)

@@ -60,27 +60,24 @@ function Login ( props ){
         <div className="logincontainer">
           <div className="loginwrapper">
             <div className="logintitle">Login Form</div>
-              <form onSubmit={handleSubmit}>
-                      <input className="logininput"
-                onChange={handleInput}
-                name="email"
-                type="email"
-                placeholder='Enter Email'
-              />
-                      
-                      <input className="logininput"
-                onChange={handleInput}
-                name="password"
-                type="assword"
-                placeholder='Enter Password'
-              />
-                  <button className="loginbutton">Login</button>
+            <form onSubmit={handleSubmit}>
+                    <input className="logininput"
+              onChange={handleInput}
+              name="email"
+              type="email"
+              placeholder='Enter Email'
+            />
+                    
+                    <input className="logininput"
+              onChange={handleInput}
+              name="password"
+              type="assword"
+              placeholder='Enter Password'
+            />
+                <button className="loginbutton">Login</button>
             </form>
-
-      </div>
-      </div>
-
-
+          </div>
+        </div>
     )
 
 
