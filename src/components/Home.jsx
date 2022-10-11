@@ -14,7 +14,7 @@ import '../App.css';
 import { useNavigate } from "react-router-dom";
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
+import { ArrowLeftOutlined, Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 // import axios from 'axios';
 
@@ -121,6 +121,8 @@ function Home ( props ){
                     </div>
                 </div>  {/* container */}
 
+
+
                
 
         
@@ -139,6 +141,12 @@ function Home ( props ){
 
                     <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />                            
                 </Routes>  
+
+                <div className="sliderContainer">
+                    {/* <img src="https://assets-global.website-files.com/602b4f8c33acd255f0f81c8f/62301d1547933a7c8e4e054b_Mr%20Yum%20-%20Split%20%26%20Pay%20-%201600%20x%20900%20-%20Blog%20Header.jpg"></img> */}
+
+
+                </div>
 
 
                 <div className="footercontainer">

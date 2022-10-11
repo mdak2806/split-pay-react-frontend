@@ -90,6 +90,17 @@
   cursor: pointer;
   margin-bottom: 10px;
 }
+.sliderContainer{
+  width: 100%;
+  height: 100vh;
+  background-color: #242c50;
+}
+/* .sliderContainer img{
+  background-size: cover;
+  background-position: center;
+  height: 90%;
+  width: 95%;
+} */
 
 .footercontainer{
   display: flex;
