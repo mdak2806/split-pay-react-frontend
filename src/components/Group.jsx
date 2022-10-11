@@ -9,18 +9,37 @@ const Group = (props) => {
 
     const [currentUser, setCurrentUser] = useState(props.user);
 
-    console.log(currentUser, props)
+    // console.log(currentUser, props)
 
-    useEffect( () => {
+    useEffect(() => {
         console.log('Component Mounting!');
-        console.log('currentUser:', currentUser)
+        // console.log('currentUser:', currentUser)
+        setCurrentUser(props.user);
+
+        console.log(currentUser, props);
+
+       
+
         // setCurrentUser({
         //     name: props.currentUser.name,
         //     email: props.currentUser.email,
         //     group: [props.currentUser.groups]
         // })
-    }, []);
+    }, [props.user]);
 
+    // function groupIndex( )  {
+    //     const groups = currentUser.groups
+    //     console.log(groups)
+    //     return(
+    //         <div>
+    //         {groups}
+                
+    //         </div>
+
+    //     )
+
+
+    // }
 
     // setCurrentUser({name: props.currentUser.name})
 
@@ -29,8 +48,9 @@ const Group = (props) => {
     return (
         <div className="content">
             Hello Group
-            {currentUser.name}
-
+            {currentUser ? currentUser.name : "no current user"}
+            
+            {/* {groupIndex} */}
             <br />
             <button>+ Group </button>
         </div>

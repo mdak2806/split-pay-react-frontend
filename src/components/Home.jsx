@@ -7,17 +7,17 @@ import Payment from "./Payment";
 import Login from './Login';
 import MyProfile from './MyProfile';
 import SignUp from './SignUp';
+import GroupPage from "./GroupPage";
 import {useState, useEffect} from 'react';
-import axios from "axios";
 
 import '../App.css';
 import { useNavigate } from "react-router-dom";
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { request } from '../utils/request'
 
-// import axios from 'axios';
 
-let BASE_URL ='http://localhost:3000'
+
 
 function Home ( props ){
 
@@ -35,12 +35,12 @@ function Home ( props ){
         // truthy conditional check statement for the token and make sure its present
         // i.e. the user is logged in (token present) 
         if (token){
-            axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-            axios.get(`${BASE_URL}/current_user`)
+            request().get(`/current_user`)
             .then(res => {
     
                 // TODO: BELOW MIGHT BE AN ERROR should be in object
               setCurrentUser(res.data)
+              console.log(`Setting current user to`, res.data)
                 // this.setState({currentUser: res.data})
             })
             .catch(err => console.warn(err))
@@ -52,7 +52,6 @@ function Home ( props ){
     function handleLogOut (){
         setCurrentUser(null)
         localStorage.removeItem("jwt");
-        axios.defaults.headers.common['Authorization'] = undefined;
         // navigatePush('/home');
 
     }
@@ -87,7 +86,7 @@ function Home ( props ){
                             </div>       
                         </div>  
                         {
-                            currentUser !== null
+                            localStorage.getItem("jwt") !== null
                             ?
                             (
                             <div className="right">
@@ -121,19 +120,29 @@ function Home ( props ){
 
         
                 <Routes>
+                    {/* setting up a conditional for rendering to ensure current user saved and loaded */}
+                    {currentUser &&
+
+                    <>
                     <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
                     <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
+                    
+                    <Route path="/group/:id" element={<GroupPage user={currentUser} {...useState}/>}
+                    />
                                        
                     <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
+
+                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />  
                                           
-                    <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} />     
+                    <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} /> 
+                    </>}    
 
                     <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
 
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
 
-                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />                            
+                                            
                 </Routes>  
         
             </Router>
