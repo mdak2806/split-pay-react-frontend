@@ -55,7 +55,7 @@ function SignUp( props){
 
             //  setting new user details with states and posting to users
             // const submitNewUser = await 
-            axios.post(`${BASE_URL}/signup`, request)
+            await axios.post(`${BASE_URL}/signup`, request)
             .then( result => {
                 console.log('signup:', result.data);
 
