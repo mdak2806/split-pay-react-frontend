@@ -61,17 +61,17 @@ function Login ( props ){
           <div className="loginwrapper">
             <div className="logintitle">Login Form</div>
               <form onSubmit={handleSubmit}>
-                      <input className="input"
+                      <input className="logininput"
                 onChange={handleInput}
                 name="email"
                 type="email"
                 placeholder='Enter Email'
               />
                       
-                      <input className="input"
+                      <input className="logininput"
                 onChange={handleInput}
                 name="password"
-                type="password"
+                type="assword"
                 placeholder='Enter Password'
               />
                   <button className="loginbutton">Login</button>

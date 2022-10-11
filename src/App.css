@@ -47,9 +47,40 @@
 .logincontainer{
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Color_icon_purple_v2.svg/800px-Color_icon_purple_v2.svg.png") center ;
+  /* background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://https://www.color-meanings.com/wp-content/uploads/2022/02/Purple-smoke-on-black-background.jpeg") center ; */
+  background-color: #242c50;
   background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.loginwrapper{
+  width: 25%;
+  padding: 20px;
+  background-color: #1dc28d;
+}
+
+.logintitle{
+  font-size: 24px;
+  font-weight: 300;
+}
+.logincontainer form{
+  display: flex;
+  flex-direction: column;
+}
+.logininput{
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0px;
+  padding: 10px;
+}
+.logincontainer button{
+  width: 40%;
+  border: none;
+  padding: 15px 20px;
+  background-color: white;
+  color: #1dc28d;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
