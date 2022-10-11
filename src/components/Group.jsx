@@ -49,9 +49,26 @@ const Group = (props) => {
         <div className="content">
             Hello Group
             {currentUser ? currentUser.name : "no current user"}
-            
-            {/* {groupIndex} */}
             <br />
+            <br />
+            <div className="userGroups">
+            <ol>
+                {
+                    
+                    
+                    currentUser.map ( r => (
+                        // console.log('r', r);
+                        <li id='leader-board' key={r.id}>
+
+                         {r.groupName} 
+                         
+
+                        </li>
+                    ))
+                }
+                </ol>
+            </div>
+
             <button>+ Group </button>
         </div>
     )
