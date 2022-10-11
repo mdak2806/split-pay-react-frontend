@@ -1,9 +1,10 @@
 import React from "react";
+import '../App.css';
 
 
 const UserDebt = () => {
     return (
-        <div>
+        <div className="content">
             Hello UserDebt
         </div>
     )

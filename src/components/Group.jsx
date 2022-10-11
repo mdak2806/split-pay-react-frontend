@@ -1,9 +1,10 @@
 import React from "react";
+import '../App.css';
 
 
 const Group = () => {
     return (
-        <div>
+        <div className="content">
             Hello Group
         </div>
     )
