@@ -64,7 +64,7 @@ function Home ( props ){
                 <div className="container">
                     <div className="wrapper">
                         <div className="left">
-                            <h1 Navigate >Split Pay App</h1>
+                            {/* <h1 Navigate >Split Pay App</h1> */}
                             <Link to="/">Split Pay App</Link>
                         </div>
 
