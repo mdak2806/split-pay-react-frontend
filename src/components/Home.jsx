@@ -14,6 +14,7 @@ import '../App.css';
 import { useNavigate } from "react-router-dom";
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 // import axios from 'axios';
 
@@ -69,7 +70,7 @@ function Home ( props ){
                             {/* <h1 Navigate >Split Pay App</h1> */}
                             <Link to="/">Split Pay App</Link>
                         </div>
-
+                        <div className="centercontainer">
                         <div className="center">
                             <div className="centermenu">
                                 <Link to="/group">Group</Link>
@@ -85,6 +86,7 @@ function Home ( props ){
                             <div className="centermenu">
                             <Link to="/payment">Payments</Link>
                             </div>       
+                        </div>
                         </div>  
                         {
                             currentUser !== null
@@ -117,26 +119,65 @@ function Home ( props ){
                         }
                      
                     </div>
-                </div>
+                </div>  {/* container */}
+
+               
 
         
                 <Routes>
-                    <Route path="/user" element={<User user={currentUser}/>} />
+                    <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
-                    <Route path="/group" element={<Group user={currentUser}/>} />
+                    <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
                                        
-                    <Route path="/userdebt" element={<UserDebt user={currentUser} />} />
+                    <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
                                           
-                    <Route path="/payment" element={<Payment user={currentUser}/>} />     
+                    <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} />     
 
-                    <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser}/>} />    
+                    <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
 
-                    <Route path="/signup" element={<SignUp fetchUser={fetchUser} />} />    
+                    <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
 
-                    <Route path="/profile" element={<MyProfile user={currentUser}/>} />                            
+                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />                            
                 </Routes>  
+
+
+                <div className="footercontainer">
+                    <div className="footerLeft">
+                        <h1>Split Pay</h1>
+                        <div className="footerDesc">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or rendomised words which don't look even slightly believable.
+                        </div>
+                        <div className="socialContainer">
+                            <div className="facebook">
+                                <Facebook />
+                            </div>
+                            <div className="ins">
+                                <Instagram />
+                            </div>
+                            <div className="twitter">
+                                <Twitter />
+                            </div>
+                        </div>
+                    </div>
+                    <div className="footerCenter">
+                        <h1>Useful Links</h1>
+                        <div className="footerLinks">
+                            <div className="linkitem">Home</div>
+                            <div className="linkitem">Group</div>
+                            <div className="linkitem">My profile</div>
+                            <div className="linkitem">Terms</div>
+                        </div>
+                    </div>
+                    <div className="footerRight">
+                        <h1>Contact</h1>
+                        <div className="contactItem">221B Baker Street, London</div>
+                        <div className="contactItem">+1 234 56 78</div>
+                        <div className="contactItem">contact@splitpay.com</div>
+                    </div>
+                </div>
         
             </Router>
+
         </div>
 
 

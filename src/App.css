@@ -1,5 +1,7 @@
 .container{
   height: 60px;
+  background-color: #1dc28d;
+  padding: 15px 0px;
 }
 .wrapper{
   padding: 10px 20px;
@@ -8,7 +10,7 @@
   justify-content: space-between;
 }
 .wrapper a{
-  color: black;
+  color: #242c50;
   text-decoration: none;
 }
 .left{
@@ -17,11 +19,14 @@
   cursor: pointer;
   font-weight: 900;
   font-size: 40px;
+  
 }
+
 .center{
   flex: 1;
   display: flex;
   align-items: center;
+  color: #242c50;
 }
 .centermenu{
   font-size: 14px;
@@ -62,6 +67,7 @@
 }
 
 .logintitle{
+  color:#242c50;
   font-size: 24px;
   font-weight: 300;
 }
@@ -80,7 +86,72 @@
   border: none;
   padding: 15px 20px;
   background-color: white;
-  color: #1dc28d;
+  color: #242c50;
   cursor: pointer;
   margin-bottom: 10px;
+}
+
+.footercontainer{
+  display: flex;
+  background-color: #1dc28d;
+  color: #242c50;
+}
+.footerLeft{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+.footerDesc{
+  margin: 20px 0px;
+}
+.socialContainer{
+  display: flex;
+}
+
+.facebook, .ins, .twitter{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+}
+.facebook{
+  background-color: #3B5999;
+}
+.ins {
+  background-color: #E4405F;
+}
+.twitter{
+  background-color: #55ACEE;
+}
+.footerCenter{
+  flex: 1;
+  padding: 20px;
+}
+.footerCenter h1{
+  margin-bottom: 30px;
+}
+.footerLinks{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.linkitem{
+  width: 50%;
+  margin-bottom: 10px;
+}
+.footerRight{
+  flex: 1;
+  padding: 20px;
+}
+.contactItem{
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
 }
