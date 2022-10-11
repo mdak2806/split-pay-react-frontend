@@ -39,7 +39,7 @@ function Login ( props ){
             console.log('token:', result.data);
              // set our local storage to have a json web token validating our login
             localStorage.setItem("jwt", result.data.token)
-            // set axios default headers to have an authorization key
+            // set axios default headers to have an  authorization key
 
             // TODO ask LUKE how to pass props from one function to another and potentially how to simplify all these posts/requests
             props.fetchUser();
@@ -57,9 +57,9 @@ function Login ( props ){
 
     return(
 
-        <div className="container">
-          <div className="wrapper">
-            <div className="title">Login Form</div>
+        <div className="logincontainer">
+          <div className="loginwrapper">
+            <div className="logintitle">Login Form</div>
               <form onSubmit={handleSubmit}>
                       <input className="input"
                 onChange={handleInput}
@@ -74,7 +74,7 @@ function Login ( props ){
                 type="password"
                 placeholder='Enter Password'
               />
-                    <button className="loginbutton">Login</button>
+                  <button className="loginbutton">Login</button>
             </form>
 
       </div>

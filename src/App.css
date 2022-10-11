@@ -43,3 +43,13 @@
   text-align: center;
   margin-top: 10%;
 }
+
+.logincontainer{
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Color_icon_purple_v2.svg/800px-Color_icon_purple_v2.svg.png") center ;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
