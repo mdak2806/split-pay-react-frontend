@@ -45,12 +45,13 @@ const Group = (props) => {
       
     }, []);
 
-    function handleGroupShow( id){
-        console.log(id)
-        console.log('clicked');
-        console.log('key', key)
+    function handleGroupShow(id, e){
+        // console.log(id)
+        console.log('clicked', id);
+        
+        // console.log('key', key)
 
-        // navigatePush(`/groups/${id}`);
+        navigatePush(`/groups/${id}`);
 
 
     }
@@ -66,7 +67,7 @@ const Group = (props) => {
                 {
                     filteredGroups.map((r) => 
                     // <Link path=`${'groups'}/${r._id}`, params={r._id}>
-                    <div onClick={handleGroupShow(r._id)} className="groups" key={r._id}>
+                    <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
                         <h4>{r.groupName}</h4> 
                         <p>{r.description}</p>
                     </div>
