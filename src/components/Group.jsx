@@ -8,12 +8,14 @@ const BASE_URL = 'http://localhost:3000'
 const Group = (props) => {
 
     const [currentUser, setCurrentUser] = useState(props.user);
+    
 
     console.log(currentUser, props)
 
     useEffect( () => {
         console.log('Component Mounting!');
         console.log('currentUser:', currentUser)
+       
         // setCurrentUser({
         //     name: props.currentUser.name,
         //     email: props.currentUser.email,
@@ -44,8 +46,8 @@ const Group = (props) => {
                         </li>
                     ))
                 }
-                </ol>
-            </div>
+               
+            
 
             <button>+ Group </button>
         </div>
