@@ -1,10 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import { useState, useEffect } from 'react'
+import  props  from 'react';
 import '../App.css';
 
-
-const BASE_URL = 'http://localhost:3000'
 
 function MyProfile (props){
     const currentUser = props.user;
@@ -46,8 +45,13 @@ function MyProfile (props){
     return ( 
         
         <div className='content'>
-          <h1>Hello {currentUser.name}</h1>
-          <h4>Your email is {currentUser.email}</h4>
+          {/* { currentUser ?
+          `Hello ${currentUser.name}`
+          `Your email is ${currentUser.email}`
+          :
+          null
+          } */}
+         
         </div>
     
     );
