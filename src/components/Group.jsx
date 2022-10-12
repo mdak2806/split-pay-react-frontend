@@ -1,73 +1,81 @@
 import React from "react";
+import '../App.css';
 import axios from 'axios';
 import '../App.css';
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 const BASE_URL = 'http://localhost:3000'
 
 const Group = (props) => {
 
-    const [currentUser, setCurrentUser] = useState(props.user);
+    const currentUser = props.user;
+
+    const [filteredGroups, setFilteredGroups] = useState([]);
+    const [key, setKey] = useState([]);
+    const navigatePush = useNavigate();
+
+
+
+    // const [myMap, setMyMap] = useState(new Map());
+    // const updateMap = (k,v) => {
+    //   setMyMap(myMap.set(k,v));
+    // }
+
+
+    // const columns = [
+    //     {field: 'groupName', headerName: 'Group Name'}, 
+    //     {field: 'description', headerName: 'Description'}
+    // ]
 
     // console.log(currentUser, props)
 
-    useEffect(() => {
-        console.log('Component Mounting!');
+    useEffect( () => {
+        // console.log('Component Mounting!');
         // console.log('currentUser:', currentUser)
-        setCurrentUser(props.user);
 
-        console.log(currentUser, props);
+        // console.log(currentUser);
 
-       
+        setFilteredGroups(currentUser.groups);
 
-        // setCurrentUser({
-        //     name: props.currentUser.name,
-        //     email: props.currentUser.email,
-        //     group: [props.currentUser.groups]
-        // })
-    }, [props.user]);
+        console.log(filteredGroups);
 
-    // function groupIndex( )  {
-    //     const groups = currentUser.groups
-    //     console.log(groups)
-    //     return(
-    //         <div>
-    //         {groups}
-                
-    //         </div>
+      
+    }, []);
 
-    //     )
+    function handleGroupShow( id){
+        console.log(id)
+        console.log('clicked');
+        console.log('key', key)
+
+        // navigatePush(`/groups/${id}`);
 
 
-    // }
-
-    // setCurrentUser({name: props.currentUser.name})
-
+    }
 
 
     return (
         <div className="content">
             Hello Group
-            {currentUser ? currentUser.name : "no current user"}
+           {/* {currentUser} */}
             <br />
-            <br />
+
             <div className="userGroups">
-            <ol>
                 {
-                    
-                    
-                    currentUser.map ( r => (
-                        // console.log('r', r);
-                        <li id='leader-board' key={r.id}>
-
-                         {r.groupName} 
-                         
-
-                        </li>
-                    ))
+                    filteredGroups.map((r) => 
+                    // <Link path=`${'groups'}/${r._id}`, params={r._id}>
+                    <div onClick={handleGroupShow(r._id)} className="groups" key={r._id}>
+                        <h4>{r.groupName}</h4> 
+                        <p>{r.description}</p>
+                    </div>
+                    // </Link>
+                    )
                 }
-                </ol>
+         
             </div>
+            
 
             <button>+ Group </button>
         </div>

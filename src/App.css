@@ -166,3 +166,15 @@
   display: flex;
   align-items: center;
 }
+.groups{
+  margin: auto;
+  width: 40%;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #0b0d18;
+  padding: 5px;
+}
+
+.groups:hover{
+  background-color: #26b510;
+}
