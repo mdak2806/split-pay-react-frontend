@@ -15,7 +15,7 @@ export const sliderItems = [
 
   {
     id: 3,
-    img: "https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80",
+    img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
     h1: "Group",
     p: " There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,",
   },
