@@ -8,6 +8,7 @@ const BASE_URL = 'http://localhost:3000'
 
 function MyProfile (props){
     const currentUser = props.user;
+    console.log(currentUser)
 
     // const [currentUser, setCurrentUser] = useState({ 
     //     name: '', 
