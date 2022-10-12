@@ -130,6 +130,8 @@ function Home ( props ){
 
         
                 <Routes>
+                    {currentUser && 
+                    <>
                     <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
                     <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
@@ -142,14 +144,15 @@ function Home ( props ){
                     <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
                                           
                     <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} />     
-
+                    
+                    <Route path="/profile" element={<MyProfile fetchUser={fetchUser} user={currentUser} {...useState}/>} /> 
+                    </>}
                     <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
 
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
-
-                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} /> 
                      
-                    <Route exact path='/' element={<Slider/>} />                          
+                    <Route exact path='/' element={<Slider/>} /> 
+                                        
                 </Routes>  
 
                 {/* <div className="sliderContainer"> */}
