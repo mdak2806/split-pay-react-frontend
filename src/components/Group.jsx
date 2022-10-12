@@ -39,14 +39,11 @@ const Group = (props) => {
     const [group, setGroup] = useState();
     const [description, setDescription] = useState('');
     const [groupName, setGroupName] = useState('');
-    const[name, setName] = useState([]);
-    const[email, setEmail] = useState([]);
     const [users, setUsers] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
 
-    useEffect( () => {
+    useEffect( (ev) => {
    
-
         setFilteredGroups(currentUser.groups);
         
         axios.get(`${BASE_URL}/users`)
@@ -59,13 +56,7 @@ const Group = (props) => {
         .catch(err => {
             console.warn(err)
         })
-        // request().get('/users').then(response => {
-        //     setUsers(response.data.find(user => user.email === email))
-        // })
-
-        // console.log('Users', users)
-
-        // console.log(filteredGroups);
+   
 
       
     }, []);
@@ -87,16 +78,6 @@ const Group = (props) => {
             case 'description':
                 setDescription(ev.target.value)
                 // console.log("desciption:", ev.target.value);
-                break;
-
-            case 'name':
-                setName( ev.target.value)
-                // console.log("email:", ev.target.value);
-                break;
-
-            case 'email':
-                setEmail(ev.target.value)
-                // console.log("password:", ev.target.value);
                 break;
                 default: console.log('sign in better please');
 
@@ -143,18 +124,6 @@ const Group = (props) => {
                     placeholder='Enter Description'
                     />
                    
-                    <input className="logininput"
-                    onChange={handleInput}
-                    name="user.name"
-                    type="user.name"
-                    placeholder='Enter User Name'
-                    />
-                    <input className="logininput"
-                    onChange={handleInput}
-                    name="user.email"
-                    type="user.email"
-                    placeholder='Enter User Email'
-                    />
                      {
                         groupMembers.map( (m, index) => (
                             <UserDropdown 
@@ -167,7 +136,7 @@ const Group = (props) => {
                         ))
                     }
                     <button onClick={addMemberDropdown}> Add Memeber </button>
-                    <button>Create Group</button>
+                    <button onClick={handleSubmit}>Create Group</button>
 
                 </form>
             </div>
@@ -177,7 +146,12 @@ const Group = (props) => {
     }
 
     function handleSubmit(ev){
+        
+        // Push current User ID and Group Member Ids into setUsers
 
+        // filter out any duplicates
+
+        // Axios Post the group to the backend
 
 
     } // handleSubmit

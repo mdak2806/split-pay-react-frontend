@@ -9,6 +9,11 @@ function MyProfile (props){
     const currentUser = props.user;
     console.log(currentUser)
 
+    // useEffect((ev)=> {
+    //   ev.preventDefault();
+
+    // })
+
     // const [currentUser, setCurrentUser] = useState({ 
     //     name: '', 
     //     password: ''
