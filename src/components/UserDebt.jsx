@@ -25,12 +25,9 @@ const UserDebt = (props) => {
     return (
         <div className="content">
             Hello UserDebt
-            {currentUser ? currentUser.name : "no current user"}
+            {currentUser.name}
         </div>
     )
-};
-
-
-
+}
 
 export default UserDebt

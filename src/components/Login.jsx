@@ -42,7 +42,7 @@ function Login ( props ){
             // set axios default headers to have an  authorization key
 
             // TODO ask LUKE how to pass props from one function to another and potentially how to simplify all these posts/requests
-            props.fetchUser();
+             props.fetchUser();
             navigatePush('/profile');
         })
         .catch(err => {

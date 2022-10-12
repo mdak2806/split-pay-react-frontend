@@ -148,8 +148,8 @@ function Home ( props ){
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
 
                     <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} /> 
-
-                    <Route exact path='/' element={<Slider/>} />                          
+                     
+                    <Route exact path='/' component={<Slider/>} />                          
                 </Routes>  
 
                 {/* <div className="sliderContainer"> */}
