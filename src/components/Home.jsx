@@ -10,6 +10,7 @@ import SignUp from './SignUp';
 import GroupPage from "./GroupPage";
 import PaymentPage from './PaymentPage';
 import {useState, useEffect} from 'react';
+import Slider from './Slider';
 import axios from "axios";
 
 import '../App.css';
@@ -146,14 +147,16 @@ function Home ( props ){
 
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
 
-                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} />                            
+                    <Route path="/profile" element={<MyProfile user={currentUser} {...useState}/>} /> 
+
+                    <Route exact path='/' element={<Slider/>} />                          
                 </Routes>  
 
-                <div className="sliderContainer">
+                {/* <div className="sliderContainer"> */}
                     {/* <img src="https://assets-global.website-files.com/602b4f8c33acd255f0f81c8f/62301d1547933a7c8e4e054b_Mr%20Yum%20-%20Split%20%26%20Pay%20-%201600%20x%20900%20-%20Blog%20Header.jpg"></img> */}
 
 
-                </div>  
+                {/* </div>   */}
 
 
                 <div className="footercontainer">

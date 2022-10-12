@@ -18,7 +18,7 @@ const Payment = (props) => {
 
     useEffect( () => {
         
-        setFilteredPayment(currentUser.payment);
+        setFilteredPayment(currentUser.payments);
 
         console.log(filteredPayment);
 
