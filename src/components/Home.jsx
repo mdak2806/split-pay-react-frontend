@@ -133,7 +133,7 @@ function Home ( props ){
                     
                     <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
                     
-                    <Route path="/group/:id" element={<Group user={currentUser} {...useState}/>}
+                    <Route path="/groups/:id" element={<GroupPage user={currentUser} {...useState}/>}
                     />
                      <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
                     />

@@ -1,9 +1,16 @@
-import { useEffect, useState } from 'react'
+import React from "react";
+import '../App.css';
+import ReactDOM from 'react-dom';
+import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom'
 import { request } from '../utils/request'
+import { useNavigate } from "react-router-dom";
+
 const GroupPage = (props) => {
     const [group, setGroup] = useState(null);
     const [currentUser, setCurrentUser] = useState(props.user);
+    const navigatePush = useNavigate();
+
 
     const { id } = useParams();
 
@@ -13,7 +20,24 @@ const GroupPage = (props) => {
         })
     }, [props.user])
 
-   
+    function handleBack(ev){
+
+        console.log('click');
+        navigatePush(`/groups`);
+
+
+
+    }
+
+    return(
+
+        <div className="content">
+            Hello
+            <button onClick={(ev) => handleBack(ev)}> Back </button>
+        </div>
+
+
+    )
 }
 
 export default GroupPage;

@@ -18,25 +18,8 @@ const Group = (props) => {
     const navigatePush = useNavigate();
 
 
-
-    // const [myMap, setMyMap] = useState(new Map());
-    // const updateMap = (k,v) => {
-    //   setMyMap(myMap.set(k,v));
-    // }
-
-
-    // const columns = [
-    //     {field: 'groupName', headerName: 'Group Name'}, 
-    //     {field: 'description', headerName: 'Description'}
-    // ]
-
-    // console.log(currentUser, props)
-
     useEffect( () => {
-        // console.log('Component Mounting!');
-        // console.log('currentUser:', currentUser)
-
-        // console.log(currentUser);
+   
 
         setFilteredGroups(currentUser.groups);
 
