@@ -12,6 +12,8 @@ const GroupPage = (props) => {
             setGroup(response.data.find(group => group._id === id))
         })
     }, [props.user])
+
+   
 }
 
 export default GroupPage;
