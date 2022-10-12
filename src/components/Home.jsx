@@ -7,6 +7,8 @@ import Payment from "./Payment";
 import Login from './Login';
 import MyProfile from './MyProfile';
 import SignUp from './SignUp';
+import GroupPage from "./GroupPage";
+import PaymentPage from './PaymentPage';
 import {useState, useEffect} from 'react';
 import axios from "axios";
 
@@ -130,6 +132,11 @@ function Home ( props ){
                     <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
                     <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
+                    
+                    <Route path="/group/:id" element={<GroupPage user={currentUser} {...useState}/>}
+                    />
+                     <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
+                    />
                                        
                     <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
                                           

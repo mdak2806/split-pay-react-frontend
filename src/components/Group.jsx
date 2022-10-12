@@ -29,9 +29,24 @@ const Group = (props) => {
     return (
         <div className="content">
             Hello Group
-            {currentUser.name}
 
             <br />
+                {
+                    
+                    
+                    currentUser.map ( r => (
+                        // console.log('r', r);
+                        <li id='leader-board' key={r.id}>
+
+                         {r.groupName} 
+                         
+
+                        </li>
+                    ))
+                }
+                </ol>
+            </div>
+
             <button>+ Group </button>
         </div>
     )
