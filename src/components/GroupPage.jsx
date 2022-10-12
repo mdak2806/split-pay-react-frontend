@@ -18,6 +18,8 @@ const GroupPage = (props) => {
         request().get('/groups').then(response => {
             setGroup(response.data.find(group => group._id === id))
         })
+
+        console.log('data', group)
     }, [props.user])
 
     function handleBack(ev){

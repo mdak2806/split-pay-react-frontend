@@ -34,7 +34,7 @@ function Login ( props ){
 
         //do an axios post request where we can send through the user details to rails and login
         axios.post(`${BASE_URL}/login`, request)
-        .then(async result => {
+        .then(result => {
 
             console.log('token:', result.data);
              // set our local storage to have a json web token validating our login
@@ -42,7 +42,7 @@ function Login ( props ){
             // set axios default headers to have an  authorization key
 
             // TODO ask LUKE how to pass props from one function to another and potentially how to simplify all these posts/requests
-            await props.fetchUser();
+             props.fetchUser();
             navigatePush('/profile');
         })
         .catch(err => {
