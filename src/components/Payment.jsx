@@ -173,7 +173,7 @@ const Payment = (props) => {
                                 <p>Payer</p>
                             </div>
                             <div className="paymentMenuItem">
-                                <p>paymentAmount</p>
+                                <p>Amount</p>
                             </div>
                             <div className="paymentMenuItem">
                                 <p>Receipt</p>

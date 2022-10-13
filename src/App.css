@@ -127,14 +127,17 @@
   bottom: 0;
   margin: auto;
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.2;
   z-index: 2;
+}
+.arrow :hover{
+  opacity: 0.5;
 }
 .sliderWrapper{
   height: 100%;
   display: flex;
   transition: all 1.5s ease;
- 
+
 }
 .slide{
   width: 100vw;

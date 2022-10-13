@@ -37,7 +37,7 @@ const Slider =() => {
                             <h1>{item.h1}</h1>
                             <p>{item.p}</p>
                             <div className="sliderInfoButton">
-                                <Link to="/signup">SIGN UP Now</Link>   
+                                <Link to="/signup">SIGN UP NOW</Link>   
                             </div>
                         </div>
                     </div>
