@@ -80,59 +80,55 @@ function Home ( props ){
                                 <img src={logo} />
                             </div>
                             <div className="logoTitle">
-                            <Link to="/">Split Pay App</Link>
+                            <Link to="/">Split Pay</Link>
                             </div>
                         </div>
-                        <div className="centercontainer">
-                        <div className="center">
-                            <div className="centermenu">
-                                <Link to="/group">Group</Link>
-                            </div>
-                            <div className="centermenu">
-                                <Link to="/user">User</Link>
-                            </div>
-                            
-                            <div className="centermenu">
-                                <Link to="/userdebt">User Debts</Link>
-                            </div>
-                            
-                            <div className="centermenu">
-                            <Link to="/payment">Payments</Link>
-                            </div>       
-                        </div>
-                        </div>  
+
                         {
                             currentUser !== null
                             ?
                             (
-                            <div className="right">
-                                <div className="menu">
-                                <Link to="/profile">Profile</Link>
-                                </div>
-    
-                                <div className="menu">
-                                <Link onClick={handleLogOut} to="/">Logout</Link>
-                                </div>
-                            </div>
+                                <><div className="wrapper">
+                                        <div className="left">
+                                            <div className="centercontainer">
+                                                <div className="center">
+                                                    <div className="centermenu">
+                                                        <Link to="/group">Group</Link>
+                                                    </div>
+                                                    <div className="centermenu">
+                                                        <Link to="/payment">Payments</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><div className="right">
+                                            <div className="menu">
+                                                <Link to="/profile">Profile</Link>
+                                            </div>
+                                            <div className="menu">
+                                                <Link onClick={handleLogOut} to="/">Logout</Link>
+                                            </div>
+                                        </div></>
                             )
                             :
                             (
-                            <div className="right">
-                                <div className="menu">
-                                <Link to="/signup">SIGN UP</Link>
-                                </div>
-    
-                                <div className="menu">
-                                <Link to="/login">SIGN IN</Link>
-                                </div>
-                            </div>
+                            <><div className="right">
+                                            <div className="menu">
+                                                <Link to="/signup">SIGN UP</Link>
+                                            </div>
+
+                                            <div className="menu">
+                                                <Link to="/login">SIGN IN</Link>
+                                            </div>
+                                        </div></>
                             )
 
 
                         }
-                     
+                     </div>
                     </div>
-                </div>  {/* container */}
+
+
 
 
 
