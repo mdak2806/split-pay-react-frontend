@@ -145,16 +145,24 @@ const GroupPage = (props) => {
         <div className="content">
             Hello
             <button onClick={(ev) => handleBack(ev)}> Back </button>
+
+            {
+            showGroupForm ?
+            <AddGroupDebt members={members} categories={categories} groupId={params.id}/> 
+            :
+            null
+
+
+            }
+
             { displayGroups ?
                 <DebtShow />
                 : 
                 null
             }
+           
 
-
-
-                <AddGroupDebt members={members} categories={categories} groupId={params.id}/>
-
+               
  
            
         </div>
@@ -203,6 +211,8 @@ function AddGroupDebt(props){
         .catch(err => {
             console.error('Error submitting data:', err)
         })
+
+        
 
     };
 

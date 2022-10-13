@@ -45,7 +45,7 @@ const Payment = (props) => {
    
         setFilteredPayments(currentUser.payments);
         
-        axios.get(`${BASE_URL}/users`)
+        axios.get(`${BASE_URL}/current_user/payments`)
 
         .then( res => {
             setUsers(res.data)
