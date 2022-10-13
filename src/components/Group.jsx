@@ -37,6 +37,7 @@ const Group = (props) => {
     const [description, setDescription] = useState('');
     const [groupName, setGroupName] = useState('');
     const [users, setUsers] = useState([]);
+    const [groups, setGroups] = useState([]);
     const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
     const [showGroupForm, setShowGroupForm] = useState(false);
@@ -47,6 +48,18 @@ const Group = (props) => {
    
         setFilteredGroups(currentUser.groups);
 
+        // Users DATA to be able to map over for the filter
+        axios.get(`${BASE_URL}/current_user/groups`)
+
+        .then( res => {
+            setGroups(res.data)
+            console.log('users data', res.data)
+
+        })
+        .catch(err => {
+            console.warn(err)
+        })
+        
         // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/users`)
 
@@ -182,16 +195,18 @@ const Group = (props) => {
 
         })
         .then(res => {
-
-            navigatePush(`/group`);
-
+            // TODO this should take you to the groups ID
+            setShowGroupForm(false);
+            setDisplayGroups(true);
+            console.log('res new group: ', res.data);
+            setGroupMembers([]);
+            setGroups([res.data, ...groups ])
         })
         .catch( err => {
             console.error('Error submitting data', err)
         })
 
-        setShowGroupForm(false);
-        setDisplayGroups(true);
+       
 
     }; // handleSubmit
 
@@ -210,51 +225,25 @@ const Group = (props) => {
         <div className="showGroupContainer">
             <div className="showGroupWrapper">
             {
-                showGroupForm ? AddGroupForm() : null
+                showGroupForm ? <AddGroupForm /> : null
             }
             {   displayGroups ? 
                 <div className="userGroups">
                  <button onClick={renderForm}>+ Group </button>
 
                     {
-                        filteredGroups.map((r) => 
-                        <div className="userGroupContainer" onClick={(e) => handleGroupShow(r._id, e)}  key={r._id}>
-                            <div className="userGroupItem">
-                                <h4>{r.groupName}</h4> 
-                            </div>
-                            <div className="userGroupItem">
-                                <p>{r.description}</p>
-                            </div>
-                            <div className="userGroupItem">
-                                <p>Pending Debts: {r.groupDebts.length}</p>
-                            </div>
-
-                            {/* <div className="userGroupItem">
-                                <div className="userGroupMemberTitle">
-                                  <p>Members:</p>
-                                </div>
-                                <div className="usergroupMember">
-                                    {
-                                        r.users.map((u) => 
-                                        <p> {u.name}</p>
-                                        )
-                                    }
-                                </div>
-                            </div> */}
-                            <div className="groupMemberContainer">
-                                <select>
-                                    <option>Members:</option>
-                                    
-                                    <option style= {{color: "#1dc28d"}}>
-                                        {
-                                            r.users.map((u) => 
-                                            <p> {u.name}</p>
-                                            )
-                                        }
-                                    </option>
-                                </select>
-                            </div>
-
+                        groups.map((r) => 
+                        <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
+                            <h4>{r.groupName}</h4> 
+                            <p>{r.description}</p>
+                        <p>Pending Debts: {r.groupDebts.length}</p>
+                            <p>Members:</p>
+                            {
+                                
+                                r.users.map((u) => 
+                                <p key={u._id}> {u.name}</p>
+                                )
+                            }
                         
                             {/* <p>Pending Debts: {r.groupDebts.count()}</p> */}
                         </div>

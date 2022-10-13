@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { ArrowLeftOutlined, Facebook, Instagram, Twitter } from "@material-ui/icons";
 
+
 // import axios from 'axios';
 
 let BASE_URL ='http://localhost:3000'
@@ -27,6 +28,9 @@ let BASE_URL ='http://localhost:3000'
 function Home ( props ){
 
     const [currentUser, setCurrentUser] = useState(null);
+    const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
+
+    console.log(groupMembers);
     // const navigatePush = useNavigate();
     // useEffect not usedEffect (might cause errors down the line)
     useEffect( () => {
@@ -140,9 +144,9 @@ function Home ( props ){
                     <>
                     <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
-                    <Route path="/group" element={<Group user={currentUser} {...useState}/>} />
+                    <Route path="/group" element={<Group setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
                     
-                    <Route path="/groups/:id" element={<GroupPage user={currentUser} {...useState}/>}
+                    <Route path="/groups/:id" element={<GroupPage user={currentUser} groupMembers={groupMembers} {...useState}/>}
                     />
                      <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
                     />
