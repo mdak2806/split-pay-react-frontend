@@ -20,16 +20,19 @@ const GroupPage = (props) => {
 
     const { id } = useParams();
 
-    useEffect( async () => {
-        await request()
-        .get('/groups')
-        .then(response => {
-            setGroup(response.data.find(group => group._id === id))
-
+    useEffect(  () => {
+        
+        axios.get(`${BASE_URL}/groups/${id}`)
+        .then(res => {
+            setGroup(res.data)
+            console.log('group', res.data)
+        })
+        .catch(err => {
+            console.warn(err)
         })
 
         
-        await axios.get (`${BASE_URL}/categories`)
+        axios.get (`${BASE_URL}/categories`)
 
         .then(res => {
             setCategories(res.data)

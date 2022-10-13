@@ -30,10 +30,6 @@ const UserDropdown = (props) => {
 const Group = (props) => {
 
     const currentUser = props.user;
-
-    console.log(currentUser);
-    // import { request } from '../utils/request'
-
     const [filteredGroups, setFilteredGroups] = useState([]);
     const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
@@ -180,9 +176,7 @@ const Group = (props) => {
         })
         .then(res => {
 
-            localStorage.setItem("jwt", res.data.token);
-            props.fetchUser();
-            navigatePush('/groups');
+            navigatePush(`/group`);
 
         })
         .catch( err => {
@@ -209,9 +203,9 @@ const Group = (props) => {
             Hello Group
            {/* {currentUser} */}
             <br />
-
+            {/* <AddGroupForm /> */}
             {
-                showGroupForm ? <AddGroupForm /> : null
+                showGroupForm ? AddGroupForm() : null
             }
             {   displayGroups ? 
                 <div className="userGroups">

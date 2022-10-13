@@ -7,6 +7,7 @@ import '../App.css';
 
 function MyProfile (props){
     const currentUser = props.user;
+    console.log(currentUser)
 
     // useEffect((ev)=> {
     //   ev.preventDefault();
