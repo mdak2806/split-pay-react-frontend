@@ -12,8 +12,8 @@ const UserDropdown = (props) => {
 
     return (
         <div className="userDropDown">
-            <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
-                <option value={-1} disabled  >{props.index + 1}. Please Select a User </option>
+          {props.index + 1}. <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
+                <option value={-1} disabled  >Please Select a User </option>
                 {
                 props.users.map( (u) => (
                     <option value={u._id} key={u._id}>{u.name}</option>    
@@ -196,11 +196,12 @@ const Group = (props) => {
         })
         .then(res => {
             // TODO this should take you to the groups ID
-            setShowGroupForm(false);
-            setDisplayGroups(true);
             console.log('res new group: ', res.data);
             setGroupMembers([]);
             setGroups([res.data, ...groups ])
+
+            setShowGroupForm(false);
+            setDisplayGroups(true);
         })
         .catch( err => {
             console.error('Error submitting data', err)
