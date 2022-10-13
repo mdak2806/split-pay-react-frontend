@@ -1,7 +1,6 @@
 import React from "react";
 import '../App.css';
 import axios from 'axios';
-import '../App.css';
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -31,6 +30,8 @@ const UserDropdown = (props) => {
 const Group = (props) => {
 
     const currentUser = props.user;
+
+    console.log(currentUser);
     // import { request } from '../utils/request'
 
     const [filteredGroups, setFilteredGroups] = useState([]);
@@ -40,12 +41,17 @@ const Group = (props) => {
     const [description, setDescription] = useState('');
     const [groupName, setGroupName] = useState('');
     const [users, setUsers] = useState([]);
+    const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
+    const [showGroupForm, setShowGroupForm] = useState(false);
+    const [displayGroups, setDisplayGroups] = useState(true);
+
 
     useEffect( (ev) => {
    
         setFilteredGroups(currentUser.groups);
-        
+
+        // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/users`)
 
         .then( res => {
@@ -57,16 +63,29 @@ const Group = (props) => {
             console.warn(err)
         })
    
+        console.log('groups info', filteredGroups);
 
       
     }, []);
 
     function handleGroupMemeberSelected(index, id){
         console.log('handleGroupMemeberSelected', index, id )
-        const membersCopy = [...groupMembers];
+        console.log('current user', currentUser._id);
+
+        // empty array and place user ID in the array creating the group
+        const membersCopy = [...groupMembers, currentUser._id];
         membersCopy[index] = id;
-        setGroupMembers(membersCopy)
+        
+        //Remove duplicates
+       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) == id);
+
+       // setting the arrays as Group Members
+        setGroupMembers(unquieMemebers);
+
+        console.log('groupMembers', groupMembers )
+
     }
+
 
     function handleInput(ev){
         switch(ev.target.name){
@@ -104,12 +123,13 @@ const Group = (props) => {
 
     }
 
-    function addGroup(){
-        console.log()
+    function AddGroupForm(){
 
         return(
 
             <div className="logincontainer">
+            <button onClick={exitForm}> X </button>
+
                 <form onSubmit={handleSubmit}>
                 <input className="logininput"
                     onChange={handleInput}
@@ -135,8 +155,8 @@ const Group = (props) => {
                             
                         ))
                     }
-                    <button onClick={addMemberDropdown}> Add Memeber </button>
-                    <button onClick={handleSubmit}>Create Group</button>
+                    <button onClick={addMemberDropdown}> Add Member </button>
+                    <button onClick={handleSubmit}>Submit Group</button>
 
                 </form>
             </div>
@@ -145,43 +165,81 @@ const Group = (props) => {
 
     }
 
-    function handleSubmit(ev){
+    const handleSubmit = (ev) => {
         
-        // Push current User ID and Group Member Ids into setUsers
+        ev.preventDefault();
+        console.log('Post new group');
 
-        // filter out any duplicates
+        axios.post(`${BASE_URL}/postgroup`, 
+        // "" need to match backend data
+        {
+            "groupName": groupName,
+            "description": description,
+            "users": groupMembers,
 
-        // Axios Post the group to the backend
+        })
+        .then(res => {
 
+            localStorage.setItem("jwt", res.data.token);
+            props.fetchUser();
+            navigatePush('/groups');
 
-    } // handleSubmit
+        })
+        .catch( err => {
+            console.error('Error submitting data', err)
+        })
 
+        setShowGroupForm(false);
+        setDisplayGroups(true);
 
+    }; // handleSubmit
+
+    const renderForm = () => {
+        setShowGroupForm(true);
+        setDisplayGroups(false);
+    };
+    const exitForm = () => {
+        setShowGroupForm(false);
+        setDisplayGroups(true);
+    };
+
+     
     return (
         <div className="content">
             Hello Group
            {/* {currentUser} */}
             <br />
-            <button onClick={addGroup}>+ Group </button>
 
             {
-            addGroup()
+                showGroupForm ? <AddGroupForm /> : null
             }
+            {   displayGroups ? 
+                <div className="userGroups">
+                 <button onClick={renderForm}>+ Group </button>
 
-            <div className="userGroups">
-                {
-                    filteredGroups.map((r) => 
-                    // <Link path=`${'groups'}/${r._id}`, params={r._id}>
-                    <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
-                        <h4>{r.groupName}</h4> 
-                        <p>{r.description}</p>
-                    </div>
-                    // </Link>
-                    )
-                }
-         
-            </div>
-            
+                    {
+                        filteredGroups.map((r) => 
+                        <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
+                            <h4>{r.groupName}</h4> 
+                            <p>{r.description}</p>
+                        <p>Pending Debts: {r.groupDebts.length}</p>
+                            <p>Members:</p>
+                            {
+                                
+                                r.users.map((u) => 
+                                <p> {u.name}</p>
+                                )
+                            }
+                        
+                            {/* <p>Pending Debts: {r.groupDebts.count()}</p> */}
+                        </div>
+                        )
+                    }
+
+
+                </div>
+                : null
+            }
 
         </div>
     )
