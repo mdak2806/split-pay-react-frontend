@@ -1,15 +1,13 @@
-import React from "react";
+
 import '../App.css';
-import ReactDOM from 'react-dom';
 import { useState, useEffect } from "react";
-import { useParams } from 'react-router-dom'
-import { request } from '../utils/request'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const BASE_URL = 'http://localhost:3000'
 
 const GroupPage = (props) => {
+    const params = useParams();
     const [group, setGroup] = useState();
     const [currentUser, setCurrentUser] = useState(props.user);
     const navigatePush = useNavigate();
@@ -155,7 +153,7 @@ const GroupPage = (props) => {
 
 
 
-                <AddGroupDebt members={members} categories={categories}/>
+                <AddGroupDebt members={members} categories={categories} groupId={params.id}/>
 
  
            
@@ -167,25 +165,51 @@ const GroupPage = (props) => {
 
 function AddGroupDebt(props){
     const [debt, setDebt] = useState({});
+    const [categoryId, setCategoryId] = useState()
     
     function handleInput(ev){
         
-        setDebt({
-            ...debt, 
-            [ev.target.name]: ev.target.value
-        });
+        if(ev.target.name.startsWith('payer-')){
+            const id = ev.target.name.split('-')[1];
+            setDebt({
+                ...debt, 
+                payers: {
+                  ...debt.payers,
+                  [id]: ev.target.value  
+                }
+            });
+        } else{
+            setDebt({
+                ...debt, 
+                [ev.target.name]: ev.target.value
+                
+            });
+        }
     }
 
-    const handleSubmit = (ev) => {
+    const handleSubmit = (v) => {
 
         console.log('handlesubmit')
+        v.preventDefault();
+
+        axios.post(`${BASE_URL}/postgroupdebt`, {
+            ...debt,
+            groupId: props.groupId
+        })
+        .then( res => {
+            console.log('res update group', res.data)
+
+        })
+        .catch(err => {
+            console.error('Error submitting data:', err)
+        })
 
     };
 
 
     return(
         <div className="logincontainer">
-            <form onSubmit={handleSubmit()}>
+            <form onSubmit={handleSubmit}>
                 <input className="logininput"
                 onChange={handleInput}
                 name="description"
@@ -201,7 +225,7 @@ function AddGroupDebt(props){
             
                 />
                 <div>
-                    <select defaultValue={-1} onChange={handleInput} >
+                    <select defaultValue={-1} name="category" onChange={handleInput} >
                         <option value={-1} disabled > Category </option>
                         {
                             props.categories.map( (c) => (
@@ -222,8 +246,8 @@ function AddGroupDebt(props){
                             <label > {r.name}
                             <input 
                                 className="logininput"
-                                onChange={handleInput}
-                                name={r._id}
+                                onChange={ handleInput} 
+                                name={`payer-${r._id}`}
                                 type="text"
                                 placeholder="$USD"
                             />
