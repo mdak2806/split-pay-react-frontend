@@ -357,7 +357,7 @@
   justify-content: center;
 }
 .shwoPaymentWrapper{
-  margin-top: -200px;
+  /* margin-top: -200px; */
   width: 30%;
   padding: 20px;
   background-color: white;
@@ -451,12 +451,15 @@
   justify-content: center;
 }
 .showGroupWrapper{
-  margin-top: -200px;
+  /* margin-top: -200px; */
   width: 90%;
   padding: 20px;
   /* background-color: #242c50; */
   background-color: white;
 }
+/* .userGroups{
+  height: 100px;
+} */
 .userGroupContainer {
   padding: 10px 40px;
   display: flex;
@@ -464,7 +467,7 @@
   justify-content: space-between;
   border: 1px solid #242c50;
 }
-.userGroupContainer, .userGroupItem{
+.userGroupItem{
   flex: 1;
 }
 

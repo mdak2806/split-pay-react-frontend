@@ -233,17 +233,29 @@ const Group = (props) => {
 
                     {
                         groups.map((r) => 
-                        <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
-                            <h4>{r.groupName}</h4> 
-                            <p>{r.description}</p>
-                        <p>Pending Debts: {r.groupDebts.length}</p>
-                            <p>Members:</p>
-                            {
-                                
-                                r.users.map((u) => 
-                                <p key={u._id}> {u.name}</p>
-                                )
-                            }
+                        <div onClick={(e) => handleGroupShow(r._id, e)} className="userGroupContainer" key={r._id}>
+                            <div className="userGroupItem">
+                                <h4>{r.groupName}</h4>
+                            </div> 
+                            <div className="userGroupItem">
+                                <p>{r.description}</p>
+                            </div>
+                            <div className="userGroupItem">
+                                <p>Pending Debts: {r.groupDebts.length}</p>
+                            </div>
+                            <div className="groupMemberContainer">
+                                <select>
+                                    <option>Members:</option>
+                                    <option>
+                                {
+                                    
+                                    r.users.map((u) => 
+                                    <p key={u._id}> {u.name}</p>
+                                    )
+                                }
+                                    </option>
+                                </select>
+                            </div>
                         
                             {/* <p>Pending Debts: {r.groupDebts.count()}</p> */}
                         </div>
