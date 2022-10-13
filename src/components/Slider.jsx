@@ -2,6 +2,8 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import '../App.css';
 import {sliderItems} from "../App.js";
+import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
+
 
 const Slider =() => {
         
@@ -34,7 +36,9 @@ const Slider =() => {
                         <div className="sliderInfo">
                             <h1>{item.h1}</h1>
                             <p>{item.p}</p>
-                            <button>SIGN IN NOW</button>
+                            <div className="sliderInfoButton">
+                                <Link to="/signup">SIGN UP Now</Link>   
+                            </div>
                         </div>
                     </div>
                     ))}

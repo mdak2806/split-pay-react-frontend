@@ -3,6 +3,10 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 import  props  from 'react';
 import '../App.css';
+import {profileItem} from "../App.js";
+import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
+
+
 
 
 function MyProfile (props){
@@ -50,13 +54,19 @@ function MyProfile (props){
 
     return ( 
         
-        <div className='content'>
-          {/* { currentUser ?
-          `Hello ${currentUser.name}`
-          `Your email is ${currentUser.email}`
-          :
-          null
-          } */}
+        <div className='profileContainer'>
+          {profileItem.map(item => (
+            <div className="profileWrapper">
+              <img src={item.img} />
+              <div className='infoContainer'>
+                <h1>{item.title}</h1>
+                <div className='profilebutton'>
+                  <Link to={item.link}>Learn More</Link>
+                </div>
+                {/* <button>Learn More</button> */}
+              </div>
+            </div>
+          ))}
          
         </div>
     

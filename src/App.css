@@ -166,12 +166,20 @@
   font-weight: 500;
   letter-spacing: 3px;
 }
-.sliderInfo button{
+.sliderInfo .sliderInfoButton{
+  width: 50%;
+  border: 0.5px solid #1dc28d;
   padding: 10px;
   font-size: 20px;
   color: #1dc28d;
   background-color: transparent;
   cursor: pointer;
+  text-align: center;
+}
+.sliderInfoButton a{
+  text-decoration: none;
+  color: #1dc28d;
+
 }
 
 
@@ -486,4 +494,50 @@
 .groupMemberContainer{
   display: flex;
   flex-direction: column;
+}
+
+.profileContainer{
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+.profileWrapper{
+  flex: 1;
+  margin: 3px;
+  height: 70vh;
+  position: relative;
+}
+
+.profileWrapper img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.infoContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.infoContainer h1{
+  color: white;
+  margin-bottom: 20px;
+}
+.profilebutton {
+  border: none;
+  padding: 10px;
+  background-color: white;
+  color: grey;
+  cursor: pointer;
+  font-weight: 600;
+}
+.profilebutton a{
+  text-decoration: none;
+  color: #242c50;
 }
