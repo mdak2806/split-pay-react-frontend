@@ -12,6 +12,7 @@ import PaymentPage from './PaymentPage';
 import {useState, useEffect} from 'react';
 import Slider from './Slider';
 import axios from "axios";
+import logo from "../logo3.png"
 
 import '../App.css';
 import { useNavigate } from "react-router-dom";
@@ -71,7 +72,12 @@ function Home ( props ){
                     <div className="wrapper">
                         <div className="left">
                             {/* <h1 Navigate >Split Pay App</h1> */}
+                            <div className="logocontainer">
+                                <img src={logo} />
+                            </div>
+                            <div className="logoTitle">
                             <Link to="/">Split Pay App</Link>
+                            </div>
                         </div>
                         <div className="centercontainer">
                         <div className="center">

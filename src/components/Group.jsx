@@ -11,9 +11,9 @@ const BASE_URL = 'http://localhost:3000'
 const UserDropdown = (props) => {
 
     return (
-        <div>
-            {props.index + 1}. <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
-                <option value={-1} disabled  >Please Select a User </option>
+        <div className="userDropDown">
+            <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
+                <option value={-1} disabled  >{props.index + 1}. Please Select a User </option>
                 {
                 props.users.map( (u) => (
                     <option value={u._id} key={u._id}>{u.name}</option>    
@@ -123,11 +123,12 @@ const Group = (props) => {
 
         return(
 
-            <div className="logincontainer">
-            <button onClick={exitForm}> X </button>
-
-                <form onSubmit={handleSubmit}>
-                <input className="logininput"
+            <div className="addGroupFormContainer">
+                <div className="addGroupFormWrapper">
+                    {/* <div className="addGroupTitle">Add Group</div> */}
+                    <button onClick={exitForm}> EXIT </button>
+                    <form onSubmit={handleSubmit}>
+                    <input className="logininput"
                     onChange={handleInput}
                     name="groupName"
                     type="groupName"
@@ -155,7 +156,13 @@ const Group = (props) => {
                     <button onClick={handleSubmit}>Submit Group</button>
 
                 </form>
+
+                </div>
             </div>
+            
+
+
+            
         )
 
 
@@ -199,11 +206,9 @@ const Group = (props) => {
 
      
     return (
-        <div className="content">
-            Hello Group
-           {/* {currentUser} */}
-            <br />
-            {/* <AddGroupForm /> */}
+
+        <div className="showGroupContainer">
+            <div className="showGroupWrapper">
             {
                 showGroupForm ? AddGroupForm() : null
             }
@@ -213,17 +218,43 @@ const Group = (props) => {
 
                     {
                         filteredGroups.map((r) => 
-                        <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
-                            <h4>{r.groupName}</h4> 
-                            <p>{r.description}</p>
-                        <p>Pending Debts: {r.groupDebts.length}</p>
-                            <p>Members:</p>
-                            {
-                                
-                                r.users.map((u) => 
-                                <p> {u.name}</p>
-                                )
-                            }
+                        <div className="userGroupContainer" onClick={(e) => handleGroupShow(r._id, e)}  key={r._id}>
+                            <div className="userGroupItem">
+                                <h4>{r.groupName}</h4> 
+                            </div>
+                            <div className="userGroupItem">
+                                <p>{r.description}</p>
+                            </div>
+                            <div className="userGroupItem">
+                                <p>Pending Debts: {r.groupDebts.length}</p>
+                            </div>
+
+                            {/* <div className="userGroupItem">
+                                <div className="userGroupMemberTitle">
+                                  <p>Members:</p>
+                                </div>
+                                <div className="usergroupMember">
+                                    {
+                                        r.users.map((u) => 
+                                        <p> {u.name}</p>
+                                        )
+                                    }
+                                </div>
+                            </div> */}
+                            <div className="groupMemberContainer">
+                                <select>
+                                    <option>Members:</option>
+                                    
+                                    <option style= {{color: "#1dc28d"}}>
+                                        {
+                                            r.users.map((u) => 
+                                            <p> {u.name}</p>
+                                            )
+                                        }
+                                    </option>
+                                </select>
+                            </div>
+
                         
                             {/* <p>Pending Debts: {r.groupDebts.count()}</p> */}
                         </div>
@@ -235,7 +266,17 @@ const Group = (props) => {
                 : null
             }
 
+            </div>
+
         </div>
+        
+            
+          
+           
+         
+            
+
+     
     )
 }
 
