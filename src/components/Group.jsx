@@ -37,6 +37,7 @@ const Group = (props) => {
     const [description, setDescription] = useState('');
     const [groupName, setGroupName] = useState('');
     const [users, setUsers] = useState([]);
+    const [groups, setGroups] = useState([]);
     const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
     const [showGroupForm, setShowGroupForm] = useState(false);
@@ -47,6 +48,18 @@ const Group = (props) => {
    
         setFilteredGroups(currentUser.groups);
 
+        // Users DATA to be able to map over for the filter
+        axios.get(`${BASE_URL}/current_user/groups`)
+
+        .then( res => {
+            setGroups(res.data)
+            console.log('users data', res.data)
+
+        })
+        .catch(err => {
+            console.warn(err)
+        })
+        
         // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/users`)
 
@@ -175,16 +188,18 @@ const Group = (props) => {
 
         })
         .then(res => {
-
-            navigatePush(`/group`);
-
+            // TODO this should take you to the groups ID
+            setShowGroupForm(false);
+            setDisplayGroups(true);
+            console.log('res new group: ', res.data);
+            setGroupMembers([]);
+            setGroups([res.data, ...groups ])
         })
         .catch( err => {
             console.error('Error submitting data', err)
         })
 
-        setShowGroupForm(false);
-        setDisplayGroups(true);
+       
 
     }; // handleSubmit
 
@@ -205,14 +220,14 @@ const Group = (props) => {
             <br />
             {/* <AddGroupForm /> */}
             {
-                showGroupForm ? AddGroupForm() : null
+                showGroupForm ? <AddGroupForm /> : null
             }
             {   displayGroups ? 
                 <div className="userGroups">
                  <button onClick={renderForm}>+ Group </button>
 
                     {
-                        filteredGroups.map((r) => 
+                        groups.map((r) => 
                         <div onClick={(e) => handleGroupShow(r._id, e)} className="groups" key={r._id}>
                             <h4>{r.groupName}</h4> 
                             <p>{r.description}</p>
@@ -221,7 +236,7 @@ const Group = (props) => {
                             {
                                 
                                 r.users.map((u) => 
-                                <p> {u.name}</p>
+                                <p key={u._id}> {u.name}</p>
                                 )
                             }
                         
