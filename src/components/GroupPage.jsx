@@ -65,7 +65,7 @@ const GroupPage = (props) => {
     function handleBack(ev){
 
         console.log('click');
-        navigatePush(`/groups`);
+        navigatePush(`/group`);
       
 
 
@@ -90,29 +90,45 @@ const GroupPage = (props) => {
         
     
         return(
-            <div className="content">
-            <button onClick={renderForm}>+ Group </button>
+            <div className="debtShowContainer">
+                <div className="debtShowWrapper">
+                   <button  className="groupShowButton" onClick={(ev) => handleBack(ev)}> Back </button>
+                   <button onClick={renderForm}>+ Group </button>
+                    <div className="debtGroupInfoForm">
+                        
+                            {
+                                groupDebts.map((r) => 
+                                    <div className="debtShow">
+                                    <div className="debtShowGroups" key={r._id}>
+                                        <p>{r.description}</p>
+                                    </div>
 
-            {
-                groupDebts.map((r) => 
-                <div className="groups" key={r._id}>
-                    <p>{r.description}</p>
-                    <p>$USD {r.amount}</p>
+                                    <div className="debtShowGroups" key={r._id}>
+                                        <p>$USD {r.amount}</p>
+                                    </div>
+                                </div>
+
+                                )
+                            }
+                            {
+                                <div className="debtShowInfoContainer">
+                                    <div className="debtShowInfoLeft">
+                                        <p>Members</p>
+                                    </div>
+                                    <div className="debtShowInfoRight">
+                                {
+                                        members.map((r) => 
+                                        <p>{r.name}</p>
+                                        )
+                                }
+                                    </div>
+                                </div>
+
+                            }
+                        
+                    </div>
                 </div>
-
-                )
-            }
-            {
-                 <div>
-                 {
-                     members.map((r) => 
-                     <p>{r.name}</p>
-                     )
-                 }
-                 </div>
-            }
-
-        </div>
+            </div>
         )
 
         }
@@ -142,10 +158,11 @@ const GroupPage = (props) => {
 
     return(
 
-        <div className="content">
-            Hello
-            <button onClick={(ev) => handleBack(ev)}> Back </button>
-
+        <div className="groupShowContainer">
+            <div className="groupShowWrapper">
+            
+            {/* <button  className="groupShowButton" onClick={(ev) => handleBack(ev)}> Back </button> */}
+            <div className='groupShowInfo'>
             {
             showGroupForm ?
             <AddGroupDebt members={members} categories={categories} groupId={params.id}/> 
@@ -163,8 +180,8 @@ const GroupPage = (props) => {
            
 
                
- 
-           
+             </div>
+           </div>
         </div>
 
 
@@ -218,58 +235,61 @@ function AddGroupDebt(props){
 
 
     return(
-        <div className="logincontainer">
-            <form onSubmit={handleSubmit}>
-                <input className="logininput"
-                onChange={handleInput}
-                name="description"
-                type="text"
-                placeholder='Enter Description'
-            
-                />
-                <input className="logininput"
-                onChange={handleInput}
-                name="totalAmount"
-                type="text"
-                placeholder='Total $USD'
-            
-                />
-                <div>
-                    <select defaultValue={-1} name="category" onChange={handleInput} >
-                        <option value={-1} disabled > Category </option>
+        <div className="proupPaymentContainer">
+            <div className="proupPaymentwrapper">
+                <form onSubmit={handleSubmit}>
+                    <input className="proupPaymentinput"
+                    onChange={handleInput}
+                    name="description"
+                    type="text"
+                    placeholder='Enter Description'
+                
+                    />
+                    <input className="proupPaymentinput"
+                    onChange={handleInput}
+                    name="totalAmount"
+                    type="text"
+                    placeholder='Total $USD'
+                
+                    />
+                    <div>
+                        <select defaultValue={-1} name="category" onChange={handleInput} >
+                            <option value={-1} disabled > Category </option>
+                            {
+                                props.categories.map( (c) => (
+                                <option value={c._id} key={c._id}>{c.categoryName}</option> 
+                                )
+                                )
+                            }
+
+
+                        </select>
+                    </div>
+                    <div>
                         {
-                            props.categories.map( (c) => (
-                               <option value={c._id} key={c._id}>{c.categoryName}</option> 
+
+                            
+                            props.members.map((r) => 
+                                <div className="groupMember" key={r._id}>
+                                    <div className="groupMemberContainer"> 
+                                        <p>{r.name}</p>
+                                    <input 
+                                        className="proupPaymentinput"
+                                        onChange={ handleInput} 
+                                        name={`payer-${r._id}`}
+                                        type="text"
+                                        placeholder="$USD"
+                                    />
+                                    </div>  
+                                </div>
                             )
-                            )
+
+                        
                         }
-
-
-                    </select>
-                </div>
-                <div>
-                    {
-
-                         
-                        props.members.map((r) => 
-                            <div  key={r._id}>
-                            <label > {r.name}
-                            <input 
-                                className="logininput"
-                                onChange={ handleInput} 
-                                name={`payer-${r._id}`}
-                                type="text"
-                                placeholder="$USD"
-                            />
-                            </label>  
-                            </div>
-                        )
-
-                    
-                    }
-                </div>
-                <button> Submit Payment </button>
-            </form>
+                    </div>
+                    <button> Submit Payment </button>
+                </form>
+            </div>
         </div>
     )
     

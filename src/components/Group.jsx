@@ -228,9 +228,9 @@ const Group = (props) => {
                 showGroupForm ? <AddGroupForm /> : null
             }
             {   displayGroups ? 
-                <div className="userGroups">
+                <div>
                  <button onClick={renderForm}>+ Group </button>
-
+                 <div className="userGroups">
                     {
                         groups.map((r) => 
                         <div onClick={(e) => handleGroupShow(r._id, e)} className="userGroupContainer" key={r._id}>
@@ -262,7 +262,7 @@ const Group = (props) => {
                         )
                     }
 
-
+                    </div>
                 </div>
                 : null
             }

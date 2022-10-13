@@ -63,7 +63,47 @@
   text-align: center;
   margin-top: 10%;
 }
+.proupPaymentContainer{
+  width: 100vw;
+  height: 100vh;
+  /* background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.5)), url("https://https://www.color-meanings.com/wp-content/uploads/2022/02/Purple-smoke-on-black-background.jpeg") center ; */
+  background-color: #242c50;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.proupPaymentwrapper{
+  width: 35%;
+  padding: 20px;
+  background-color: #1dc28d;
+}
+.proupPaymentContainer form{
+  display: flex;
+  flex-direction: column;
+}
+.proupPaymentinput{
+  flex: 1;
+  min-width: 40%;
+  margin: 10px 0px;
+  padding: 10px;
+}
+.groupMemberContainer p{
+  margin-bottom: 1px;
+}
 
+.proupPaymentwrapper button, select{
+  width: 100%;
+  border: none;
+  padding: 15px 20px;
+  background-color: white;
+  color: #242c50;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .logincontainer{
   width: 100vw;
   height: 100vh;
@@ -270,6 +310,67 @@
   background-color: #26b510;
 }
 
+.debtShowInfoContainer{
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #242c50;
+}
+.debtShowInfoLeft, .debtShowInfoRight{
+  flex: 1;
+  padding-left: 40px;
+}
+
+.debtShowContainer{
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+.debtShowWrapper{
+  margin-top: -200px;
+  width: 50%;
+  padding: 20px;
+  background-color: white;
+}
+.debtShowWrapper button{
+  width: 100%;
+  border: none;
+  padding: 15px 20px;
+  background-color: #1dc28d;
+  color: #242c50;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.debtGroupInfoForm{
+  height:100px;
+}
+.debtShow{
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #242c50;
+}
+
+.debtShowGroups{
+  padding-left: 40px;
+  flex: 1;
+}
+
+/* .groupShowWrapper{
+  margin-top: -100px;
+  width: 50%;
+  padding: 20px;
+  background-color: white;
+} */
 
 .paymentcontainer{
   width: 100vw;
@@ -285,7 +386,7 @@
   text-align: center;
   margin-bottom: 30px;
 }
-.paymentcontainer button{
+.paymentcontainer button, .groupShowButton{
   width: 100%;
   border: none;
   padding: 15px 20px;
@@ -298,7 +399,7 @@
   justify-content: center;
 }
 
-.paymentwrapper{
+.paymentwrapper {
   margin-top: -200px;
   width: 50%;
   padding: 20px;
@@ -343,12 +444,13 @@
   justify-content: space-between;
   border: 1px solid #242c50;
 }
-.paymentInfoForm :hover{
-  background-color: #1dc28d;
-}
+
 .paymentInfoFormPayment, .paymentMenuItem{
   flex: 1;
 }
+/* .payments :hover{
+  background-color: #1dc28d;
+} */
 .shwoPaymentContainer{
   width: 100vw;
   height: 100vh;
@@ -466,6 +568,9 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid #242c50;
+}
+.userGroupContainer :hover{
+  background-color: #1dc28d;
 }
 .userGroupItem{
   flex: 1;

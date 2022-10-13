@@ -180,7 +180,7 @@ const Payment = (props) => {
                             </div>
                         {/* </div> */}
                     </div>
-                    
+                
                     <div className="paymentInfoForm">
                         {
                             filteredPayments.map((r) => 
@@ -202,6 +202,7 @@ const Payment = (props) => {
                         }
                        
                     </div>
+                
                 </div>
                
                     
