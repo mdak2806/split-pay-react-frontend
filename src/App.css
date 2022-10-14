@@ -593,7 +593,9 @@
 /* .userGroupItem{
   flex: 1;
 } */
-
+.groupMemberContainer select:hover{
+  background-color: white;
+}
 
 .showGroupContainer button{
   width: 100%;
