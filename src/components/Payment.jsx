@@ -179,9 +179,9 @@ const Payment = (props) => {
             <div className="paymenttitle"></div>
             
                 {/* <form onSubmit={handleSubmit}> */}
-                    <button className="paymentbutton" onClick={addPayment}>
+                    {/* <button className="paymentbutton" onClick={addPayment}>
                         + Payment
-                    </button>
+                    </button> */}
                     
                     
                 <div className="hidePaymentForm">
