@@ -155,7 +155,7 @@ const Payment = (props) => {
         { hideAddPaymentForm ?             
         <div className="paymentcontainer">
           <div className="paymentwrapper">
-            <div className="paymenttitle">Hello Payment</div>
+            <div className="paymenttitle"></div>
             
                 {/* <form onSubmit={handleSubmit}> */}
                     <button className="paymentbutton" onClick={addPayment}>
