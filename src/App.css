@@ -108,6 +108,9 @@
   align-items: center;
   justify-content: center;
 }
+.paymentInfoFormPayment button:hover{
+  background-color: white;
+}
 .logincontainer{
   width: 100vw;
   height: 100vh;
@@ -425,11 +428,13 @@
 
 
 .paymentMenuContainer{
+  background-color: #1dc28d;
   padding: 10px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border: 1px solid #242c50;
+  color: #242c50;
 
 }
 /* .paymentmenu{
