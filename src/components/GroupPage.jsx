@@ -93,7 +93,23 @@ const GroupPage = (props) => {
             <div className="debtShowContainer">
                 <div className="debtShowWrapper">
                    <button  className="groupShowButton" onClick={(ev) => handleBack(ev)}> Back </button>
-                   <button onClick={renderForm}>+ Group </button>
+                   {
+                                <div className="debtShowInfoContainer">
+                                    <div className="debtShowInfoLeft">
+                                        <p> Group Members</p>
+                                    </div>
+                                    <div className="debtShowInfoRight">
+                                {
+                                        members.map((r) => 
+                                        <p>{r.name}</p>
+                                        )
+                                }
+                                    </div>
+                                </div>
+
+                    }
+                    <br /> <br />
+                   <button onClick={renderForm}>+ Group Expense </button>
                     <div className="debtGroupInfoForm">
                         
                             {
@@ -110,21 +126,7 @@ const GroupPage = (props) => {
 
                                 )
                             }
-                            {
-                                <div className="debtShowInfoContainer">
-                                    <div className="debtShowInfoLeft">
-                                        <p>Members</p>
-                                    </div>
-                                    <div className="debtShowInfoRight">
-                                {
-                                        members.map((r) => 
-                                        <p>{r.name}</p>
-                                        )
-                                }
-                                    </div>
-                                </div>
-
-                            }
+                          
                         
                     </div>
                 </div>
@@ -151,10 +153,9 @@ const GroupPage = (props) => {
         setDisplayGroups(false);
     };
 
-    const exitForm = () => {
-        setShowGroupForm(false);
-        setDisplayGroups(true);
-    };
+  
+   
+   
 
     return(
 
@@ -190,8 +191,20 @@ const GroupPage = (props) => {
 
 function AddGroupDebt(props){
     const [debt, setDebt] = useState({});
-    const [categoryId, setCategoryId] = useState()
+    const [categoryId, setCategoryId] = useState();
+    const navigatePush = useNavigate();
+
     
+    
+    const exitForm = () => {
+
+        // setShowGroupForm(true),
+        // setDisplayGroups(false)
+        // const [showGroupForm, setShowGroupForm] = useState(false);
+        // const [displayGroups, setDisplayGroups] = useState(true);
+        navigatePush(`/group`);
+    };
+
     function handleInput(ev){
         
         if(ev.target.name.startsWith('payer-')){
@@ -223,7 +236,7 @@ function AddGroupDebt(props){
         })
         .then( res => {
             console.log('res update group', res.data)
-
+            exitForm();
         })
         .catch(err => {
             console.error('Error submitting data:', err)
@@ -237,6 +250,7 @@ function AddGroupDebt(props){
     return(
         <div className="proupPaymentContainer">
             <div className="proupPaymentwrapper">
+            <button onClick={exitForm}> EXIT </button>
                 <form onSubmit={handleSubmit}>
                     <input className="proupPaymentinput"
                     onChange={handleInput}

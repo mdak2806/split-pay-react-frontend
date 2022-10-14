@@ -35,6 +35,7 @@ const Payment = (props) => {
     const [group, setGroup] = useState('');
     const [payee, setPayee] = useState('');
     const [payer, setPayer] = useState('');
+    const [paymentId, setPaymentId] = useState('');
 
 
     const navigatePush = useNavigate();
@@ -43,13 +44,14 @@ const Payment = (props) => {
 
     useEffect( (ev) => {
    
-        setFilteredPayments(currentUser.payments);
+        // setFilteredPayments(currentUser.payments);
         
         axios.get(`${BASE_URL}/current_user/payments`)
 
         .then( res => {
             setUsers(res.data)
             console.log('users data', res.data)
+            setFilteredPayments(res.data)
 
         })
         .catch(err => {
@@ -59,6 +61,10 @@ const Payment = (props) => {
 
       
     }, []);
+
+    function handleReceipt(){
+        console.log('clicked')
+    }
 
     function handlePaymentShow(id, e){
         // console.log(id)
@@ -79,6 +85,21 @@ const Payment = (props) => {
     function backToAddPayment(){
         setShowAddPaymentForm(false)
         setHideAddPaymentForm(true)
+    }
+
+    function handlePayment( paymentId, index){
+
+        axios.post(`${BASE_URL}/pay/${paymentId}` )
+        .then( res => {
+            console.log('response', res.data);
+            const newPayments = [...filteredPayments];
+            newPayments[index] = res.data;
+            setFilteredPayments(newPayments)
+
+        })
+        .catch(err => {
+            console.warn(err)
+        })
     }
 
 
@@ -183,8 +204,9 @@ const Payment = (props) => {
                 
                     <div className="paymentInfoForm">
                         {
-                            filteredPayments.map((r) => 
-                                <div onClick={(e) => handlePaymentShow(r._id, e)} className="payments" key={r._id}>
+                            filteredPayments.map((r, index) => 
+                            // <div onClick={(e) => handlePaymentShow(r._id, e)} className="payments" key={r._id}>
+                                <div className="payments" key={r._id}>
                                     <div className="paymentInfoFormPayment">
                                         <p>{r.payee.name}</p>
                                     </div>
@@ -195,8 +217,15 @@ const Payment = (props) => {
                                         <h4>{r.paymentAmount}</h4> 
                                     </div>
                                     <div className="paymentInfoFormPayment">
-                                        <p>{r.receipt}</p>
+                                        {(r.receipt) ?
+                                        <p> {r.receipt}</p>
+                                        :
+                                        <button 
+                                        onClick={() => handlePayment(r._id, index) }> Settle</button>
+    
+    }
                                     </div>
+                                    
                                 </div>
                             )
                         }

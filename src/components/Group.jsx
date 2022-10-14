@@ -46,14 +46,15 @@ const Group = (props) => {
 
     useEffect( (ev) => {
    
-        setFilteredGroups(currentUser.groups);
+        // setFilteredGroups(currentUser.groups);
 
         // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/current_user/groups`)
 
         .then( res => {
             setGroups(res.data)
-            console.log('users data', res.data)
+            console.log('users groups data', res.data)
+            setFilteredGroups(res.data);
 
         })
         .catch(err => {
@@ -94,8 +95,6 @@ const Group = (props) => {
         console.log('groupMembers', groupMembers )
 
     }
-
-
     function handleInput(ev){
         switch(ev.target.name){
 
@@ -115,6 +114,8 @@ const Group = (props) => {
 
 
     };
+
+   
 
     function addMemberDropdown (e){
         e.preventDefault();
@@ -144,13 +145,13 @@ const Group = (props) => {
                     <input className="logininput"
                     onChange={handleInput}
                     name="groupName"
-                    type="groupName"
+                    type="text"
                     placeholder='Enter Group Name'
                     />
                     <input className="logininput"
                     onChange={handleInput}
                     name="description"
-                    type="description"
+                    type="text"
                     placeholder='Enter Description'
                     />
                    
@@ -198,7 +199,7 @@ const Group = (props) => {
             // TODO this should take you to the groups ID
             console.log('res new group: ', res.data);
             setGroupMembers([]);
-            setGroups([res.data, ...groups ])
+            setGroups(res.data )
 
             setShowGroupForm(false);
             setDisplayGroups(true);
@@ -226,7 +227,7 @@ const Group = (props) => {
         <div className="showGroupContainer">
             <div className="showGroupWrapper">
             {
-                showGroupForm ? <AddGroupForm /> : null
+                showGroupForm ? AddGroupForm() : null
             }
             {   displayGroups ? 
                 <div>
