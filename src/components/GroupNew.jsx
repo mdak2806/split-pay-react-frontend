@@ -27,7 +27,7 @@ const UserDropdown = (props) => {
 } // User Drop down
 
 
-const Group = (props) => {
+const GroupNew = (props) => {
 
     const currentUser = props.user;
     const [filteredGroups, setFilteredGroups] = useState([]);
@@ -52,6 +52,7 @@ const Group = (props) => {
         .then( res => {
             setGroups(res.data)
             setFilteredGroups(res.data);
+            console.log('groups', groups);
 
         })
         .catch(err => {
@@ -76,7 +77,7 @@ const Group = (props) => {
         console.log('current user', currentUser._id);
 
         // empty array and place user ID in the array creating the group
-        const membersCopy = [...groupMembers, currentUser._id];
+        const membersCopy = [...groupMembers];
         membersCopy[index] = id;
         
         //Remove duplicates
@@ -202,4 +203,4 @@ const Group = (props) => {
     )
 }
 
-export default Group
+export default GroupNew
