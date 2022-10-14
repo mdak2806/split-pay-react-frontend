@@ -108,6 +108,9 @@
   align-items: center;
   justify-content: center;
 }
+.paymentInfoFormPayment button:hover{
+  background-color: white;
+}
 .logincontainer{
   width: 100vw;
   height: 100vh;
