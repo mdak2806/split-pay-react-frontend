@@ -54,6 +54,7 @@ const Group = (props) => {
         .then( res => {
             setGroups(res.data)
             setFilteredGroups(res.data);
+            console.log(res.data);
 
         })
         .catch(err => {
