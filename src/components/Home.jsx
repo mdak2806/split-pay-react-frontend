@@ -192,9 +192,15 @@ function Home ( props ){
                     <div className="footerCenter">
                         <h1>Useful Links</h1>
                         <div className="footerLinks">
-                            <div className="linkitem">Home</div>
-                            <div className="linkitem">Group</div>
-                            <div className="linkitem">My profile</div>
+                            <div className="linkitem">
+                            <Link to="/">Home</Link>
+                            </div>
+                            <div className="linkitem">
+                            <Link to="/group">Group</Link>
+                            </div>
+                            <div className="linkitem">
+                            <Link to="/profile">My profile</Link>
+                            </div>
                             <div className="linkitem">Terms</div>
                         </div>
                     </div>
