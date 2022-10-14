@@ -72,7 +72,7 @@ function Login ( props ){
                     <input className="logininput"
               onChange={handleInput}
               name="password"
-              type="assword"
+              type="password"
               placeholder='Enter Password'
             />
                 <button className="loginbutton">Login</button>

@@ -13,6 +13,7 @@ import {useState, useEffect} from 'react';
 import Slider from './Slider';
 import axios from "axios";
 import logo from "../logo3.png"
+import GroupNew from './GroupNew';
 
 import '../App.css';
 import { useNavigate } from "react-router-dom";
@@ -141,6 +142,8 @@ function Home ( props ){
                     <Route path="/user" element={<User user={currentUser} {...useState}/>} />
                     
                     <Route path="/group" element={<Group setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
+
+                    <Route path="/groupnew" element={<GroupNew setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
                     
                     <Route path="/groups/:id" element={<GroupPage user={currentUser} groupMembers={groupMembers}  {...useState}/>}
                     />

@@ -40,8 +40,6 @@ const Group = (props) => {
     const [groups, setGroups] = useState([]);
     const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
-    const [showGroupForm, setShowGroupForm] = useState(false);
-    const [displayGroups, setDisplayGroups] = useState(true);
 
 
     useEffect( (ev) => {
@@ -117,22 +115,45 @@ const Group = (props) => {
         setGroupMembers([...groupMembers, null])
     }
 
-    function handleGroupShow(id, e){
-        // console.log(id)
-        console.log('clicked', id);
+
+
+    const handleSubmit = (ev) => {
         
-        // console.log('key', key)
+        ev.preventDefault();
+        console.log('Post new group');
 
-        navigatePush(`/groups/${id}`);
+        axios.post(`${BASE_URL}/postgroup`, 
+        // "" need to match backend data
+        {
+            "groupName": groupName,
+            "description": description,
+            "users": groupMembers,
 
+        })
+        .then(res => {
+            // TODO this should take you to the groups ID
+            console.log('res new group: ', res.data);
+            setGroupMembers([]);
+            setGroups(res.data )
+            navigatePush(`/group`);
+        })
+        .catch( err => {
+            console.error('Error submitting data', err)
+        })
 
-    }
+       
 
-    function AddGroupForm(){
+    }; // handleSubmit
 
-        return(
+    const exitForm = () => {
+      navigatePush('/group')
+    };
 
-            <div className="addGroupFormContainer">
+     
+    return (
+
+        <div className="showGroupContainer">
+           <div className="addGroupFormContainer">
                 <div className="addGroupFormWrapper">
                     {/* <div className="addGroupTitle">Add Group</div> */}
                     <button onClick={exitForm}> EXIT </button>
@@ -167,104 +188,6 @@ const Group = (props) => {
                 </form>
 
                 </div>
-            </div>
-            
-
-
-            
-        )
-
-
-    }
-
-    const handleSubmit = (ev) => {
-        
-        ev.preventDefault();
-        console.log('Post new group');
-
-        axios.post(`${BASE_URL}/postgroup`, 
-        // "" need to match backend data
-        {
-            "groupName": groupName,
-            "description": description,
-            "users": groupMembers,
-
-        })
-        .then(res => {
-            // TODO this should take you to the groups ID
-            console.log('res new group: ', res.data);
-            setGroupMembers([]);
-            setGroups(res.data )
-
-            setShowGroupForm(false);
-            setDisplayGroups(true);
-            navigatePush(`/group`);
-        })
-        .catch( err => {
-            console.error('Error submitting data', err)
-        })
-
-       
-
-    }; // handleSubmit
-
-    const renderForm = () => {
-      navigatePush('/groupnew')
-       
-    };
-    const exitForm = () => {
-        setShowGroupForm(false);
-        setDisplayGroups(true);
-    };
-
-     
-    return (
-
-        <div className="showGroupContainer">
-            <div className="showGroupWrapper">
-            {
-                showGroupForm ? AddGroupForm() : null
-            }
-            {   displayGroups ? 
-                <div>
-                 <button onClick={renderForm}>+ Group </button>
-                 <div className="userGroups">
-                    {
-                        groups.map((r) => 
-                        <div onClick={(e) => handleGroupShow(r._id, e)} className="userGroupContainer" key={r._id}>
-                            <div className="userGroupItem">
-                                <h4>{r.groupName}</h4>
-                            </div> 
-                            <div className="userGroupItem">
-                                <p>{r.description}</p>
-                            </div>
-                            <div className="userGroupItem">
-                                <p>Pending Debts: {r.groupDebts.length}</p>
-                            </div>
-                            <div className="groupMemberContainer">
-                                <select>
-                                    <option>Members:</option>
-                                    <option>
-                                {
-                                    
-                                    r.users.map((u) => 
-                                    <p key={u._id}> {u.name}</p>
-                                    )
-                                }
-                                    </option>
-                                </select>
-                            </div>
-                        
-                            {/* <p>Pending Debts: {r.groupDebts.count()}</p> */}
-                        </div>
-                        )
-                    }
-
-                    </div>
-                </div>
-                : null
-            }
-
             </div>
 
         </div>
