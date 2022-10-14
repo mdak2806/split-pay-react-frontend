@@ -27,7 +27,7 @@ const UserDropdown = (props) => {
 } // User Drop down
 
 
-const Group = (props) => {
+const GroupNew = (props) => {
 
     const currentUser = props.user;
     const [filteredGroups, setFilteredGroups] = useState([]);
@@ -35,7 +35,7 @@ const Group = (props) => {
     const navigatePush = useNavigate();
     const [group, setGroup] = useState();
     const [description, setDescription] = useState('');
-    const [groupName, setGroupName] = useState('');
+    const [name, setName] = useState('');
     const [users, setUsers] = useState([]);
     const [groups, setGroups] = useState([]);
     const [newUserGroup, setNewUserGroup] = useState([]);
@@ -52,6 +52,7 @@ const Group = (props) => {
         .then( res => {
             setGroups(res.data)
             setFilteredGroups(res.data);
+            console.log('groups', groups);
 
         })
         .catch(err => {
@@ -76,7 +77,7 @@ const Group = (props) => {
         console.log('current user', currentUser._id);
 
         // empty array and place user ID in the array creating the group
-        const membersCopy = [...groupMembers, currentUser._id];
+        const membersCopy = [...groupMembers];
         membersCopy[index] = id;
         
         //Remove duplicates
@@ -91,9 +92,9 @@ const Group = (props) => {
     function handleInput(ev){
         switch(ev.target.name){
 
-            case 'groupName':
-                setGroupName(ev.target.value)
-                // console.log("groupName:", ev.target.value);
+            case 'name':
+                setName(ev.target.value)
+                // console.log("name:", ev.target.value);
                 break;
             case 'description':
                 setDescription(ev.target.value)
@@ -125,7 +126,7 @@ const Group = (props) => {
         axios.post(`${BASE_URL}/postgroup`, 
         // "" need to match backend data
         {
-            "groupName": groupName,
+            "name": name,
             "description": description,
             "users": groupMembers,
 
@@ -160,7 +161,7 @@ const Group = (props) => {
                     <form onSubmit={handleSubmit}>
                     <input className="logininput"
                     onChange={handleInput}
-                    name="groupName"
+                    name="name"
                     type="text"
                     placeholder='Enter Group Name'
                     />
@@ -202,4 +203,4 @@ const Group = (props) => {
     )
 }
 
-export default Group
+export default GroupNew
