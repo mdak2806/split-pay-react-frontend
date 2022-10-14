@@ -36,7 +36,7 @@ const GroupPage = (props) => {
             console.log('group', res.data)
             setGroupDebts(res.data.groupDebts);
             setMembers(res.data.users);
-            // setMembersName(res.data.users.name);
+            console.log('members', members);
             // setDebtCategory(res.data.groupDebts.category);
             // setDebtCategory(groupDebts.category.categoryName)
 
