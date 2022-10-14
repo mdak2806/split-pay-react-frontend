@@ -35,7 +35,7 @@ const GroupNew = (props) => {
     const navigatePush = useNavigate();
     const [group, setGroup] = useState();
     const [description, setDescription] = useState('');
-    const [groupName, setGroupName] = useState('');
+    const [name, setName] = useState('');
     const [users, setUsers] = useState([]);
     const [groups, setGroups] = useState([]);
     const [newUserGroup, setNewUserGroup] = useState([]);
@@ -92,9 +92,9 @@ const GroupNew = (props) => {
     function handleInput(ev){
         switch(ev.target.name){
 
-            case 'groupName':
-                setGroupName(ev.target.value)
-                // console.log("groupName:", ev.target.value);
+            case 'name':
+                setName(ev.target.value)
+                // console.log("name:", ev.target.value);
                 break;
             case 'description':
                 setDescription(ev.target.value)
@@ -126,7 +126,7 @@ const GroupNew = (props) => {
         axios.post(`${BASE_URL}/postgroup`, 
         // "" need to match backend data
         {
-            "groupName": groupName,
+            "name": name,
             "description": description,
             "users": groupMembers,
 
@@ -161,7 +161,7 @@ const GroupNew = (props) => {
                     <form onSubmit={handleSubmit}>
                     <input className="logininput"
                     onChange={handleInput}
-                    name="groupName"
+                    name="name"
                     type="text"
                     placeholder='Enter Group Name'
                     />
