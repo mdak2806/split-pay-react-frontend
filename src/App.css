@@ -292,6 +292,10 @@
   width: 50%;
   margin-bottom: 10px;
 }
+.linkitem a{
+  color: #242c50;
+  text-decoration: none;
+}
 .footerRight{
   flex: 1;
   padding: 20px;
