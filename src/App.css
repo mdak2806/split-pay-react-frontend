@@ -238,6 +238,7 @@
 } */
 
 .footercontainer{
+  margin-top: 60px;
   display: flex;
   background-color: #1dc28d;
   color: #242c50;
@@ -408,7 +409,9 @@
 }
 
 .paymentwrapper {
-  margin-top: -200px;
+  height: 100vh;
+  /* margin-top: -200px; */
+  margin-top: 40px;
   width: 50%;
   padding: 20px;
   background-color: white;
