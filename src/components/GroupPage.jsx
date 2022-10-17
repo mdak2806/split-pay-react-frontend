@@ -7,9 +7,10 @@ import axios from "axios";
 const BASE_URL = 'http://localhost:3000'
 
 const GroupPage = (props) => {
-    const params = useParams();
-    const [group, setGroup] = useState();
-    const [currentUser, setCurrentUser] = useState(props.user);
+    // const params = useParams();
+    // const [group, setGroup] = useState();
+    // const [currentUser, setCurrentUser] = useState(props.user);
+    const currentUser = props.user;
     const navigatePush = useNavigate();
     const [groupDebts, setGroupDebts] = useState([]);
     const [categories, setCategories] = useState([]);
@@ -17,8 +18,8 @@ const GroupPage = (props) => {
     // const [displayGroups, setDisplayGroups] = useState(true);
     // const [description, setDescription] = useState('');
     // const [totalAmount, setTotalAmount] = useState()
-    const [newDebtCategory, setNewDebtCategory] = useState()
-    const [payee, setPayee] = useState(currentUser._id);
+    // const [newDebtCategory, setNewDebtCategory] = useState()
+    // const [payee, setPayee] = useState(currentUser._id);
     
     const [members, setMembers] = useState([]);
     // const [membersName, setMembersName] = useState();
@@ -33,7 +34,7 @@ const GroupPage = (props) => {
         
         axios.get(`${BASE_URL}/groups/${id}`)
         .then(res => {
-            setGroup(res.data)
+            // setGroup(res.data)
             // console.log('group', res.data)
             setGroupDebts(res.data.groupDebts);
             setMembers(res.data.users);
@@ -60,7 +61,7 @@ const GroupPage = (props) => {
 
       
 
-    }, [props.user])
+    }, [props.user._id])
     
 
     function handleBack(ev){
@@ -84,18 +85,18 @@ const GroupPage = (props) => {
         // console.log('group cat', debtCategory);
         // console.log('members', members);
         // console.log('members name', membersName);
-        members.map((r) => {
-            console.log('names', r.name)
-         })
+        // members.map((r) => {
+        //     console.log('names', r.name)
+        //  })
 
          
-        function handleCategorySelected(index, id){
-            console.log('handleCategorySelected', index, id)
-            const newCategoryCopy = [...categories]
-            newCategoryCopy[index] = id;
+        // function handleCategorySelected(index, id){
+        //     console.log('handleCategorySelected', index, id)
+        //     const newCategoryCopy = [...categories]
+        //     newCategoryCopy[index] = id;
 
-            setNewDebtCategory(newCategoryCopy);
-        }
+        //     setNewDebtCategory(newCategoryCopy);
+        // }
 
     
 

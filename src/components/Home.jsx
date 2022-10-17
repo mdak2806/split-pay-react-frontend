@@ -17,10 +17,10 @@ import GroupNew from './GroupNew';
 import GroupExpense from './GroupExpense';
 
 import '../App.css';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
-import { ArrowLeftOutlined, Facebook, Instagram, Twitter } from "@material-ui/icons";
+import {  Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 
 // import axios from 'axios';
@@ -30,7 +30,8 @@ let BASE_URL ='http://localhost:3000'
 function Home ( props ){
 
     const [currentUser, setCurrentUser] = useState(null);
-    const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
+    const groupMembers = props.groupMembers;
+    // const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
 
 
     console.log(groupMembers);
@@ -80,7 +81,7 @@ function Home ( props ){
                         <div className="left">
                             {/* <h1 Navigate >Split Pay App</h1> */}
                             <div className="logocontainer">
-                                <img src={logo} />
+                                <img src={logo} alt='' />
                             </div>
                             <div className="logoTitle">
                             <Link to="/">Split Pay</Link>

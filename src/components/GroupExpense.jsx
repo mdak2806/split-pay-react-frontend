@@ -7,12 +7,12 @@ const BASE_URL = 'http://localhost:3000'
 
 function GroupExpense (props){
     const [debt, setDebt] = useState({});
-    const [categoryId, setCategoryId] = useState();
+    // const [categoryId, setCategoryId] = useState();
     const navigatePush = useNavigate();
     const [categories, setCategories] = useState([]);
-    const [group, setGroup] = useState();
+    // const [group, setGroup] = useState();
     const [members, setMembers] = useState([]);
-    const [newMembers, setNewMembers] = useState([]);
+    // const [newMembers, setNewMembers] = useState([]);
 
 
 
@@ -25,7 +25,7 @@ function GroupExpense (props){
         
         axios.get(`${BASE_URL}/groups/${id}`)
         .then(res => {
-            setGroup(res.data)
+            // setGroup(res.data)
             // set member and exclude Current USER
             setMembers(res.data.users.filter((i) => i._id !== props.user._id))
 
@@ -48,7 +48,7 @@ function GroupExpense (props){
 
       
 
-    }, [props.user])
+    }, [props.user._id])
     
     const exitForm = () => {
 

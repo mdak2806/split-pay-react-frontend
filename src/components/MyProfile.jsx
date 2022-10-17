@@ -1,10 +1,10 @@
 import React from 'react'
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import  props  from 'react';
+// import axios from 'axios'
+// import { useState, useEffect } from 'react'
+// import  props  from 'react';
 import '../App.css';
 import {profileItem} from "../App.js";
-import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { HashRouter as  Link} from "react-router-dom";
 
 
 
@@ -19,7 +19,7 @@ function MyProfile (props){
         <div className='profileContainer'>
           {profileItem.map(item => (
             <div className="profileWrapper">
-              <img src={item.img} />
+              <img src={item.img} alt='' />
               <div className='infoContainer'>
                 <h1>{item.title}</h1>
                 <div className='profilebutton'>

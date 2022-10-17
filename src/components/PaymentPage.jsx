@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const PaymentPage = (props) => {
     const [payment, setPayment] = useState(null);
-    const [currentUser, setCurrentUser] = useState(props.user);
+    // const [currentUser, setCurrentUser] = useState(props.user);
     const navigatePush = useNavigate();
 
 
@@ -19,7 +19,7 @@ const PaymentPage = (props) => {
         })
         
 
-    }, [props.user])
+    }, [props.user._id])
 
     console.log('Payments page data:', payment )
 

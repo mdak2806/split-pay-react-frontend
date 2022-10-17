@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -30,15 +30,15 @@ const UserDropdown = (props) => {
 const Group = (props) => {
 
     const currentUser = props.user;
-    const [filteredGroups, setFilteredGroups] = useState([]);
-    const [key, setKey] = useState([]);
+    // const [filteredGroups, setFilteredGroups] = useState([]);
+    // const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
-    const [group, setGroup] = useState();
+    // const [group, setGroup] = useState();
     const [description, setDescription] = useState('');
     const [groupName, setGroupName] = useState('');
     const [users, setUsers] = useState([]);
     const [groups, setGroups] = useState([]);
-    const [newUserGroup, setNewUserGroup] = useState([]);
+    // const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
     const [showGroupForm, setShowGroupForm] = useState(false);
     const [displayGroups, setDisplayGroups] = useState(true);
@@ -53,7 +53,7 @@ const Group = (props) => {
 
         .then( res => {
             setGroups(res.data)
-            setFilteredGroups(res.data);
+            // setFilteredGroups(res.data);
             console.log(res.data);
 
         })
@@ -83,7 +83,7 @@ const Group = (props) => {
         membersCopy[index] = id;
         
         //Remove duplicates
-       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) == id);
+       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) === id);
 
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);

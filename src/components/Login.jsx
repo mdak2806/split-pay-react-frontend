@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import '../App.css';
 
@@ -23,6 +23,7 @@ function Login ( props ){
               break;
             case 'password':
               setPassword(ev.target.value)
+              break;
             default: return;
             // TODO change the default to return a notification to the user that wrong login
           }
