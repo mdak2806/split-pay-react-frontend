@@ -14,6 +14,7 @@ import Slider from './Slider';
 import axios from "axios";
 import logo from "../logo3.png"
 import GroupNew from './GroupNew';
+import GroupExpense from './GroupExpense';
 
 import '../App.css';
 import { useNavigate } from "react-router-dom";
@@ -30,6 +31,7 @@ function Home ( props ){
 
     const [currentUser, setCurrentUser] = useState(null);
     const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
+
 
     console.log(groupMembers);
     // const navigatePush = useNavigate();
@@ -144,6 +146,10 @@ function Home ( props ){
                     <Route path="/group" element={<Group setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
 
                     <Route path="/groupnew" element={<GroupNew setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
+                    
+                    <Route path="/groups/:id/expense" element={<GroupExpense setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
+
+                    
                     
                     <Route path="/groups/:id" element={<GroupPage user={currentUser} groupMembers={groupMembers}  {...useState}/>}
                     />

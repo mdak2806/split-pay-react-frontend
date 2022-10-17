@@ -8,14 +8,23 @@ import { useNavigate } from "react-router-dom";
 
 const BASE_URL = 'http://localhost:3000'
 
+// Drop down for the users table
+
 const UserDropdown = (props) => {
 
+
+    // removing current user from the drop down as automatically assigned to the group
+    const newUsers= props.users.filter((i) => i._id !== props.user._id)
+
+
+
     return (
+        // A map for the drop down whilst providing the index of each user to use when setting state
         <div className="userDropDown">
-          {props.index + 1}. <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
+           <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
                 <option value={-1} disabled  >Please Select a User </option>
                 {
-                props.users.map( (u) => (
+                newUsers.map( (u) => (
                     <option value={u._id} key={u._id}>{u.name}</option>    
                 ))}
 
@@ -30,6 +39,7 @@ const UserDropdown = (props) => {
 const GroupNew = (props) => {
 
     const currentUser = props.user;
+    console.log(currentUser);
     const [filteredGroups, setFilteredGroups] = useState([]);
     const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
@@ -52,7 +62,7 @@ const GroupNew = (props) => {
         .then( res => {
             setGroups(res.data)
             setFilteredGroups(res.data);
-            console.log('groups', groups);
+            // console.log('groups', groups);
 
         })
         .catch(err => {
@@ -73,8 +83,8 @@ const GroupNew = (props) => {
     }, []);
 
     function handleGroupMemeberSelected(index, id){
-        console.log('handleGroupMemeberSelected', index, id )
-        console.log('current user', currentUser._id);
+        // console.log('handleGroupMemeberSelected', index, id )
+        // console.log('current user', currentUser._id);
 
         // empty array and place user ID in the array creating the group
         const membersCopy = [...groupMembers];
@@ -86,7 +96,7 @@ const GroupNew = (props) => {
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);
 
-        console.log('groupMembers', groupMembers )
+        // console.log('groupMembers', groupMembers )
 
     }
     function handleInput(ev){
@@ -121,7 +131,7 @@ const GroupNew = (props) => {
     const handleSubmit = (ev) => {
         
         ev.preventDefault();
-        console.log('Post new group');
+        // console.log('Post new group');
 
         axios.post(`${BASE_URL}/postgroup`, 
         // "" need to match backend data
@@ -174,7 +184,8 @@ const GroupNew = (props) => {
                    
                      {
                         groupMembers.map( (m, index) => (
-                            <UserDropdown 
+                            <UserDropdown
+                                user={currentUser} 
                                 users={users} 
                                 key={index} 
                                 index={index} 
