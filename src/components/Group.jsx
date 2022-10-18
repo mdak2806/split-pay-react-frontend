@@ -30,7 +30,7 @@ const UserDropdown = (props) => {
 const Group = (props) => {
 
     const currentUser = props.user;
-    const [filteredGroups, setFilteredGroups] = useState([]);
+    // const [filteredGroups, setFilteredGroups] = useState([]);
     // const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
     // const [group, setGroup] = useState();
@@ -53,7 +53,7 @@ const Group = (props) => {
 
         .then( res => {
             setGroups(res.data)
-            setFilteredGroups(res.data);
+            // setFilteredGroups(res.data);
             console.log(res.data);
 
         })
@@ -83,7 +83,7 @@ const Group = (props) => {
         membersCopy[index] = id;
         
         //Remove duplicates
-       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) == id);
+       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) === id);
 
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);

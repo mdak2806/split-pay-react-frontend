@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -91,7 +91,7 @@ const GroupNew = (props) => {
         membersCopy[index] = id;
         
         //Remove duplicates
-       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) == id);
+       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) === id);
 
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);

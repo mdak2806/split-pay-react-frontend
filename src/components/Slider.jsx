@@ -31,7 +31,7 @@ const Slider =() => {
                     {sliderItems.map((item) => (
                     <div className="slide" key={item.id}>
                         <div className="slideImgContainer">
-                            <img src={item.img} />
+                            <img src={item.img} alt='' />
                         </div>
                         <div className="sliderInfo">
                             <h1>{item.h1}</h1>

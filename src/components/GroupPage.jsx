@@ -61,7 +61,7 @@ const GroupPage = (props) => {
 
       
 
-    }, [props.user])
+    }, [props.user, id])
     
 
     function handleBack(ev){
@@ -85,9 +85,9 @@ const GroupPage = (props) => {
         // console.log('group cat', debtCategory);
         // console.log('members', members);
         // console.log('members name', membersName);
-        members.map((r) => {
-            console.log('names', r.name)
-         })
+        // members.map((r) => {
+        //     console.log('names', r.name)
+        //  })
 
          
         function handleCategorySelected(index, id){
@@ -98,6 +98,8 @@ const GroupPage = (props) => {
             setNewDebtCategory(newCategoryCopy);
         }
 
+        // Delete
+        console.log(handleCategorySelected);
     
 
         const renderForm = () => {

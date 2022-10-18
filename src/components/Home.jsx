@@ -69,7 +69,7 @@ function Home ( props ){
                         <div className="left">
                             {/* <h1 Navigate >Split Pay App</h1> */}
                             <div className="logocontainer">
-                                <img src={logo} />
+                                <img src={logo} alt=''/>
                             </div>
                             <div className="logoTitle">
                             <Link to="/">Split Pay</Link>
