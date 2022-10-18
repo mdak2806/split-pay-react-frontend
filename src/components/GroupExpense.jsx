@@ -48,7 +48,7 @@ function GroupExpense (props){
 
       
 
-    }, [props.user._id])
+    }, [])
     
     const exitForm = () => {
 
