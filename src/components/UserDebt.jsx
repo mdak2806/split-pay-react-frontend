@@ -1,7 +1,7 @@
 import React from "react";
 import '../App.css';
 // import axios from 'axios';
-import { useState, useEffect } from "react";
+import {  useEffect } from "react";
 
 // const BASE_URL = 'http://localhost:3000'
 
@@ -20,7 +20,7 @@ const UserDebt = (props) => {
         //     email: props.currentUser.email,
         //     group: [props.currentUser.groups]
         // })
-    }, [props.user._id]);
+    }, [currentUser]);
 
 
     return (

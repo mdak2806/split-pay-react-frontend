@@ -40,7 +40,7 @@ const Payment = (props) => {
 
     // const navigatePush = useNavigate();
 
-    const currentUser = props.user
+    // const currentUser = props.user
 
     useEffect( (ev) => {
    

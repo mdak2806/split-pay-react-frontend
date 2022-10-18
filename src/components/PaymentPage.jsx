@@ -19,7 +19,7 @@ const PaymentPage = (props) => {
         })
         
 
-    }, [props.user._id])
+    }, [id])
 
     console.log('Payments page data:', payment )
 

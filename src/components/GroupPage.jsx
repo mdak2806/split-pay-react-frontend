@@ -10,10 +10,10 @@ const GroupPage = (props) => {
     // const params = useParams();
     // const [group, setGroup] = useState();
     // const [currentUser, setCurrentUser] = useState(props.user);
-    const currentUser = props.user;
+    // const currentUser = props.user;
     const navigatePush = useNavigate();
     const [groupDebts, setGroupDebts] = useState([]);
-    const [categories, setCategories] = useState([]);
+    // const [categories, setCategories] = useState([]);
     // const [showGroupForm, setShowGroupForm] = useState(false);
     // const [displayGroups, setDisplayGroups] = useState(true);
     // const [description, setDescription] = useState('');
@@ -61,7 +61,7 @@ const GroupPage = (props) => {
 
       
 
-    }, [props.user._id])
+    }, [id])
     
 
     function handleBack(ev){

@@ -80,7 +80,7 @@ const GroupNew = (props) => {
             console.warn(err)
         })
       
-    }, []);
+    }, [groups]);
 
     function handleGroupMemeberSelected(index, id){
         // console.log('handleGroupMemeberSelected', index, id )
