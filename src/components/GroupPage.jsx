@@ -51,7 +51,7 @@ const GroupPage = (props) => {
         axios.get (`${BASE_URL}/categories`)
 
         .then(res => {
-            setCategories(res.data)
+            // setCategories(res.data)
             console.log('categories', res.data)
         })
         .catch(err => {
