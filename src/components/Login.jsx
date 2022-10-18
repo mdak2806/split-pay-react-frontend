@@ -4,9 +4,6 @@ import {useState} from 'react';
 import { useNavigate } from "react-router-dom";
 import '../App.css';
 
-
-
-
 const BASE_URL = 'http://localhost:3000';
 
 function Login ( props ){
@@ -25,7 +22,6 @@ function Login ( props ){
               setPassword(ev.target.value)
               break;
             default: return;
-            // TODO change the default to return a notification to the user that wrong login
           }
     }
 
@@ -37,13 +33,9 @@ function Login ( props ){
         //do an axios post request where we can send through the user details to rails and login
         axios.post(`${BASE_URL}/login`, request)
         .then(result => {
-
-            console.log('token:', result.data);
              // set our local storage to have a json web token validating our login
             localStorage.setItem("jwt", result.data.token)
             // set axios default headers to have an  authorization key
-
-            // TODO ask LUKE how to pass props from one function to another and potentially how to simplify all these posts/requests
              props.fetchUser();
             navigatePush('/profile');
         })
@@ -51,10 +43,6 @@ function Login ( props ){
             console.warn(err)
         })
         
-        // prevent default / mount page
-        // useEffect( () => {
-        //     console.log('Component Mounting!');
-        // }, []);
     }
 
     return(

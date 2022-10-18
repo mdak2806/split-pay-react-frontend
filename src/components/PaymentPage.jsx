@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 
 const PaymentPage = (props) => {
     const [payment, setPayment] = useState(null);
-    // const [currentUser, setCurrentUser] = useState(props.user);
     const navigatePush = useNavigate();
 
 
@@ -20,8 +19,6 @@ const PaymentPage = (props) => {
         
 
     }, [id])
-
-    console.log('Payments page data:', payment )
 
     function handleBack(ev){
 

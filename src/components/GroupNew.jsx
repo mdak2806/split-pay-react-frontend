@@ -2,7 +2,6 @@ import React from "react";
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -39,37 +38,15 @@ const UserDropdown = (props) => {
 const GroupNew = (props) => {
 
     const currentUser = props.user;
-    console.log(currentUser);
-    const [filteredGroups, setFilteredGroups] = useState([]);
-    // const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
-    // const [group, setGroup] = useState();
     const [description, setDescription] = useState('');
     const [name, setName] = useState('');
     const [users, setUsers] = useState([]);
-    const [groups, setGroups] = useState([]);
-    // const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
 
-    console.log(filteredGroups, groups)
+
     useEffect( (ev) => {
-   
-        // setFilteredGroups(currentUser.groups);
 
-        // Users DATA to be able to map over for the filter
-        axios.get(`${BASE_URL}/current_user/groups`)
-
-        .then( res => {
-            setGroups(res.data)
-            setFilteredGroups(res.data);
-            // console.log('groups', groups);
-
-        })
-        .catch(err => {
-            console.warn(err)
-        })
-        
-        // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/users`)
 
         .then( res => {
@@ -83,9 +60,6 @@ const GroupNew = (props) => {
     }, []);
 
     function handleGroupMemeberSelected(index, id){
-        // console.log('handleGroupMemeberSelected', index, id )
-        // console.log('current user', currentUser._id);
-
         // empty array and place user ID in the array creating the group
         const membersCopy = [...groupMembers];
         membersCopy[index] = id;
@@ -96,45 +70,34 @@ const GroupNew = (props) => {
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);
 
-        // console.log('groupMembers', groupMembers )
-
     }
+
+    
     function handleInput(ev){
         switch(ev.target.name){
 
             case 'name':
                 setName(ev.target.value)
-                // console.log("name:", ev.target.value);
                 break;
             case 'description':
                 setDescription(ev.target.value)
-                // console.log("desciption:", ev.target.value);
                 break;
                 default: console.log('sign in better please');
 
-                // TODO: change the console log to an error notification so the user can see its wrong
-
         } // end of Switch
 
-
     };
-
-   
 
     function addMemberDropdown (e){
         e.preventDefault();
         setGroupMembers([...groupMembers, null])
     }
 
-
-
     const handleSubmit = (ev) => {
         
         ev.preventDefault();
-        // console.log('Post new group');
 
         axios.post(`${BASE_URL}/postgroup`, 
-        // "" need to match backend data
         {
             "name": name,
             "description": description,
@@ -142,10 +105,6 @@ const GroupNew = (props) => {
 
         })
         .then(res => {
-            // TODO this should take you to the groups ID
-            console.log('res new group: ', res.data);
-            setGroupMembers([]);
-            setGroups(res.data )
             navigatePush(`/group`);
         })
         .catch( err => {
@@ -166,7 +125,6 @@ const GroupNew = (props) => {
         <div className="showGroupContainer">
            <div className="addGroupFormContainer">
                 <div className="addGroupFormWrapper">
-                    {/* <div className="addGroupTitle">Add Group</div> */}
                     <button onClick={exitForm}> EXIT </button>
                     <form onSubmit={handleSubmit}>
                     <input className="logininput"
@@ -204,13 +162,6 @@ const GroupNew = (props) => {
 
         </div>
         
-            
-          
-           
-         
-            
-
-     
     )
 }
 

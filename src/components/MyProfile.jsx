@@ -1,18 +1,11 @@
 
 import React from 'react'
-// import axios from 'axios'
-// import { useState, useEffect } from 'react'
-// import  props  from 'react';
 import '../App.css';
 import {profileItem} from "../App.js";
 import { NavLink as Link} from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
 
+function MyProfile (){
 
-
-function MyProfile (props){
-    const currentUser = props.user;
-    console.log(currentUser)
 
 
     return ( 
@@ -26,7 +19,6 @@ function MyProfile (props){
                 <div className='profilebutton'>
                   <Link to={item.link}>Learn More</Link>
                 </div>
-                {/* <button>Learn More</button> */}
               </div>
             </div>
           ))}

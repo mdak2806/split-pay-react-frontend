@@ -7,12 +7,10 @@ const BASE_URL = 'http://localhost:3000'
 
 function GroupExpense (props){
     const [debt, setDebt] = useState({});
-    // const [categoryId, setCategoryId] = useState();
     const navigatePush = useNavigate();
     const [categories, setCategories] = useState([]);
     const [group, setGroup] = useState();
     const [members, setMembers] = useState([]);
-    // const [newMembers, setNewMembers] = useState([]);
 
     console.log(group)
 

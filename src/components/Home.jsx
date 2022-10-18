@@ -2,7 +2,6 @@ import React from "react";
 import '../App.css';
 import Group from "./Group";
 import User from "./User";
-import UserDebt from "./UserDebt";
 import Payment from "./Payment";
 import Login from './Login';
 import MyProfile from './MyProfile';
@@ -15,25 +14,19 @@ import axios from "axios";
 import logo from "../logo3.png"
 import GroupNew from './GroupNew';
 import GroupExpense from './GroupExpense';
-
 import '../App.css';
-// import { useNavigate } from "react-router-dom";
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
-// import axios from 'axios';
+
+
 let BASE_URL ='http://localhost:3000'
 function Home ( props ){
-    const [currentUser, setCurrentUser] = useState(null);
-    // const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
 
+    const [currentUser, setCurrentUser] = useState(null);
     const groupMembers = props.groupMembers;
 
-
-    console.log(groupMembers);
-    // const navigatePush = useNavigate();
     // useEffect not usedEffect (might cause errors down the line)
     useEffect( () => {
-        console.log('Component Mounting!');
         fetchUser();
     }, []);
     // function to set current user
@@ -67,7 +60,6 @@ function Home ( props ){
                 <div className="container">
                     <div className="wrapper">
                         <div className="left">
-                            {/* <h1 Navigate >Split Pay App</h1> */}
                             <div className="logocontainer">
                                 <img src={logo} alt=''/>
                             </div>
@@ -134,8 +126,6 @@ function Home ( props ){
                     />
                      <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
                     />
-                                       
-                    <Route path="/userdebt" element={<UserDebt user={currentUser} {...useState}/>} />
                                           
                     <Route path="/payment" element={<Payment user={currentUser} {...useState}/>} />     
                     
@@ -147,9 +137,7 @@ function Home ( props ){
                     <Route exact path='/' element={<Slider/>} /> 
                                         
                 </Routes>  
-                {/* <div className="sliderContainer"> */}
-                    {/* <img src="https://assets-global.website-files.com/602b4f8c33acd255f0f81c8f/62301d1547933a7c8e4e054b_Mr%20Yum%20-%20Split%20%26%20Pay%20-%201600%20x%20900%20-%20Blog%20Header.jpg"></img> */}
-                {/* </div>   */}
+
                 <div className="footercontainer">
                     <div className="footerLeft">
                         <h1>Split Pay</h1>
