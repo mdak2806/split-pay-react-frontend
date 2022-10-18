@@ -18,20 +18,15 @@ import GroupExpense from './GroupExpense';
 
 import '../App.css';
 // import { useNavigate } from "react-router-dom";
-
 import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
-import {  Facebook, Instagram, Twitter } from "@material-ui/icons";
-
-
+import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 // import axios from 'axios';
-
 let BASE_URL ='http://localhost:3000'
-
 function Home ( props ){
-
     const [currentUser, setCurrentUser] = useState(null);
-    const groupMembers = props.groupMembers;
     // const [groupMembers, setGroupMemeber] = useState(props.groupMembers)
+
+    const groupMembers = props.groupMembers;
 
 
     console.log(groupMembers);
@@ -41,7 +36,6 @@ function Home ( props ){
         console.log('Component Mounting!');
         fetchUser();
     }, []);
-
     // function to set current user
     function fetchUser () {
         let token =  localStorage.getItem("jwt");
@@ -60,20 +54,14 @@ function Home ( props ){
         }
       
     };
-
     // function to log-out user
     function handleLogOut (){
         setCurrentUser(null)
         localStorage.removeItem("jwt");
         axios.defaults.headers.common['Authorization'] = undefined;
         // navigatePush('/home');
-
     }
-
-
-
     return(
-
         <div className="App">
             <Router>
                 <div className="container">
@@ -81,13 +69,12 @@ function Home ( props ){
                         <div className="left">
                             {/* <h1 Navigate >Split Pay App</h1> */}
                             <div className="logocontainer">
-                                <img src={logo} alt='' />
+                                <img src={logo} />
                             </div>
                             <div className="logoTitle">
                             <Link to="/">Split Pay</Link>
                             </div>
                         </div>
-
                         {
                             currentUser !== null
                             ?
@@ -120,24 +107,15 @@ function Home ( props ){
                                             <div className="menu">
                                                 <Link to="/signup">SIGN UP</Link>
                                             </div>
-
                                             <div className="menu">
                                                 <Link to="/login">SIGN IN</Link>
                                             </div>
                                         </div></>
                             )
-
-
                         }
                      </div>
                     </div>
-
-
-
-
-
                
-
         
                 <Routes>
                     {currentUser && 
@@ -147,11 +125,11 @@ function Home ( props ){
                     <Route path="/group" element={<Group setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
 
                     <Route path="/groupnew" element={<GroupNew setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
-                    
+
                     <Route path="/groups/:id/expense" element={<GroupExpense setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
 
-                    
-                    
+
+
                     <Route path="/groups/:id" element={<GroupPage user={currentUser} groupMembers={groupMembers}  {...useState}/>}
                     />
                      <Route path="/payment/:id" element={<PaymentPage user={currentUser} {...useState}/>}
@@ -164,20 +142,14 @@ function Home ( props ){
                     <Route path="/profile" element={<MyProfile fetchUser={fetchUser} user={currentUser} {...useState}/>} /> 
                     </>}
                     <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
-
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
                      
                     <Route exact path='/' element={<Slider/>} /> 
                                         
                 </Routes>  
-
                 {/* <div className="sliderContainer"> */}
                     {/* <img src="https://assets-global.website-files.com/602b4f8c33acd255f0f81c8f/62301d1547933a7c8e4e054b_Mr%20Yum%20-%20Split%20%26%20Pay%20-%201600%20x%20900%20-%20Blog%20Header.jpg"></img> */}
-
-
                 {/* </div>   */}
-
-
                 <div className="footercontainer">
                     <div className="footerLeft">
                         <h1>Split Pay</h1>
@@ -220,14 +192,7 @@ function Home ( props ){
                 </div>
         
             </Router>
-
         </div>
-
-
-
-
     );
-
 } // Home function
-
 export default Home

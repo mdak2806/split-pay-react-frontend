@@ -2,46 +2,39 @@ import React from "react";
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 const BASE_URL = 'http://localhost:3000'
+const GroupDropdown = (props) => {
+    return (
+        <div>
+            {props.index + 1}. <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
+                <option value={-1} disabled  >Please Select a Group </option>
+                {
+                props.users.map( (u) => (
+                    <option value={u._id} key={u._id}>{u.name}</option>    
+                ))}
+            </select>
+        </div>
+    )
+} // Group Drop down
 
+console.log(GroupDropdown);
 
-// const GroupDropdown = (props) => {
-
-//     return (
-//         <div>
-//             {props.index + 1}. <select defaultValue={-1} onChange={(ev) => props.onChange (props.index, ev.target.value)}>
-//                 <option value={-1} disabled  >Please Select a Group </option>
-//                 {
-//                 props.users.map( (u) => (
-//                     <option value={u._id} key={u._id}>{u.name}</option>    
-//                 ))}
-
-//             </select>
-
-//         </div>
-//     )
-
-// } // Group Drop down
 
 const Payment = (props) => {
     const [filteredPayments, setFilteredPayments] = useState([]);
-    // const [users, setUsers] = useState([]);
-    // const [showAddPaymentForm, setShowAddPaymentForm] = useState(false);
-    // const [hideAddPaymentForm, setHideAddPaymentForm] = useState(true);
-    // const [amount, setAmount] = useState('');
-    // const [receipt, setReceipt] = useState('');
-    // const [group, setGroup] = useState('');
-    // const [payee, setPayee] = useState('');
-    // const [payer, setPayer] = useState('');
+    const [users, setUsers] = useState([]);
+    const [showAddPaymentForm, setShowAddPaymentForm] = useState(false);
+    const [hideAddPaymentForm, setHideAddPaymentForm] = useState(true);
+    const [amount, setAmount] = useState('');
+    const [receipt, setReceipt] = useState('');
+    const [group, setGroup] = useState('');
+    const [payee, setPayee] = useState('');
+    const [payer, setPayer] = useState('');
     // const [paymentId, setPaymentId] = useState('');
-
-
     // const navigatePush = useNavigate();
-
     // const currentUser = props.user
-
+    console.log(users, amount, receipt, group, payee, payer);
     useEffect( (ev) => {
    
         // setFilteredPayments(currentUser.payments);
@@ -49,7 +42,8 @@ const Payment = (props) => {
         axios.get(`${BASE_URL}/current_user/payments`)
 
         .then( res => {
-            // setUsers(res.data)
+            setUsers(res.data)
+            console.log('users data', res.data)
             // console.log('users data', res.data)
             setFilteredPayments(res.data)
 
@@ -58,79 +52,65 @@ const Payment = (props) => {
             console.warn(err)
         })
    
-
       
     }, []);
-
     // function handleReceipt(){
     //     console.log('clicked')
     // }
-
     // function handlePaymentShow(id, e){
     //     // console.log(id)
     //     console.log('clicked', id);
         
     //     // console.log('key', key)
-
     //     navigatePush(`/payments/${id}`);
-
-
     // }
-
     // function addPayment(){
     //     setShowAddPaymentForm(true)
     //     setHideAddPaymentForm(false)
     // } // addPayment
-
-    // function backToAddPayment(){
-    //     setShowAddPaymentForm(false)
-    //     setHideAddPaymentForm(true)
-    // }
-
+    function backToAddPayment(){
+        setShowAddPaymentForm(false)
+        setHideAddPaymentForm(true)
+    }
     function handlePayment( paymentId, index){
-
         axios.post(`${BASE_URL}/pay/${paymentId}` )
         .then( res => {
             console.log('response', res.data);
             const newPayments = [...filteredPayments];
             newPayments[index] = res.data;
             setFilteredPayments(newPayments)
-
         })
         .catch(err => {
             console.warn(err)
         })
     }
-
-
-    // function handleInput (ev){
-    //     // switch(ev.target.amount){
-    //     //     case 'amount':
-    //     //       setAmount(ev.target.value)
-    //     //       break;
-    //     //     case 'receipt':
-    //     //       setReceipt(ev.target.value)
-    //     //       break;
-    //     //     case 'group':
-    //     //       setGroup(ev.target.value)
-    //     //       break;
-    //     //     case 'payee':
-    //     //       setPayee(ev.target.value)
-    //     //       break;
-    //     //     case 'payer':
-    //     //       setPayer(ev.target.value)
-    //     //       break;
+    function handleInput (ev){
+        switch(ev.target.amount){
+            case 'amount':
+              setAmount(ev.target.value)
+              break;
+            case 'receipt':
+              setReceipt(ev.target.value)
+              break;
+            case 'group':
+              setGroup(ev.target.value)
+              break;
+            case 'payee':
+              setPayee(ev.target.value)
+              break;
+            case 'payer':
+              setPayer(ev.target.value)
+              break;
             
-    //     //     default: return;
+            default: return;
             
-    //     //   }
-    // }
+          }
+    }
    
     console.log(props.user);
-
     return (
       <div className="payment" >
-        {/* {showAddPaymentForm ? 
+        {showAddPaymentForm ? 
                     
             <div className="shwoPaymentContainer">
                 <div className="shwoPaymentWrapper">
@@ -166,14 +146,13 @@ const Payment = (props) => {
                                 type="Payer"
                                 placeholder='Payer'
                         />
-
                         <button>Submit</button>
                     </form>   
                 </div>
             </div>
             : null
-        }  */}
-        {/* { hideAddPaymentForm ?              */}
+        } 
+        { hideAddPaymentForm ?             
         <div className="paymentcontainer">
           <div className="paymentwrapper">
             <div className="paymenttitle"></div>
@@ -240,11 +219,10 @@ const Payment = (props) => {
             </div>
             
         </div>
-        {/* : null
-        } */}
+        : null
+        }
                
       </div>
     )
 }
-
 export default Payment;

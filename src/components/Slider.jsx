@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import '../App.css';
 import {sliderItems} from "../App.js";
-import { HashRouter as  Link} from "react-router-dom";
+import { NavLink as Link} from "react-router-dom";
 
 
 const Slider =() => {
@@ -31,7 +31,7 @@ const Slider =() => {
                     {sliderItems.map((item) => (
                     <div className="slide" key={item.id}>
                         <div className="slideImgContainer">
-                            <img src={item.img} alt='' />
+                            <img src={item.img} />
                         </div>
                         <div className="sliderInfo">
                             <h1>{item.h1}</h1>

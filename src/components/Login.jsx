@@ -23,7 +23,6 @@ function Login ( props ){
               break;
             case 'password':
               setPassword(ev.target.value)
-              break;
             default: return;
             // TODO change the default to return a notification to the user that wrong login
           }

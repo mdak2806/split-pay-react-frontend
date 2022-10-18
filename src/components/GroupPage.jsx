@@ -1,4 +1,3 @@
-
 import '../App.css';
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -7,25 +6,26 @@ import axios from "axios";
 const BASE_URL = 'http://localhost:3000'
 
 const GroupPage = (props) => {
-    // const params = useParams();
-    // const [group, setGroup] = useState();
+    const params = useParams();
+    const [group, setGroup] = useState();
+    const currentUser = props.user;
     // const [currentUser, setCurrentUser] = useState(props.user);
-    // const currentUser = props.user;
     const navigatePush = useNavigate();
     const [groupDebts, setGroupDebts] = useState([]);
-    // const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
     // const [showGroupForm, setShowGroupForm] = useState(false);
     // const [displayGroups, setDisplayGroups] = useState(true);
     // const [description, setDescription] = useState('');
     // const [totalAmount, setTotalAmount] = useState()
-    // const [newDebtCategory, setNewDebtCategory] = useState()
+    const [newDebtCategory, setNewDebtCategory] = useState()
     // const [payee, setPayee] = useState(currentUser._id);
+    const payee = currentUser._id
     
     const [members, setMembers] = useState([]);
     // const [membersName, setMembersName] = useState();
     // const [membersId, setMembersId] = useState();
     // const [debtCategory, setDebtCategory] = useState();
-
+    console.log(params, group, newDebtCategory, payee)
 
     const { id } = useParams();
 
@@ -34,7 +34,7 @@ const GroupPage = (props) => {
         
         axios.get(`${BASE_URL}/groups/${id}`)
         .then(res => {
-            // setGroup(res.data)
+            setGroup(res.data)
             // console.log('group', res.data)
             setGroupDebts(res.data.groupDebts);
             setMembers(res.data.users);
@@ -51,7 +51,7 @@ const GroupPage = (props) => {
         axios.get (`${BASE_URL}/categories`)
 
         .then(res => {
-            // setCategories(res.data)
+            setCategories(res.data)
             console.log('categories', res.data)
         })
         .catch(err => {
@@ -61,7 +61,7 @@ const GroupPage = (props) => {
 
       
 
-    }, [id])
+    }, [props.user])
     
 
     function handleBack(ev){
@@ -85,18 +85,18 @@ const GroupPage = (props) => {
         // console.log('group cat', debtCategory);
         // console.log('members', members);
         // console.log('members name', membersName);
-        // members.map((r) => {
-        //     console.log('names', r.name)
-        //  })
+        members.map((r) => {
+            console.log('names', r.name)
+         })
 
          
-        // function handleCategorySelected(index, id){
-        //     console.log('handleCategorySelected', index, id)
-        //     const newCategoryCopy = [...categories]
-        //     newCategoryCopy[index] = id;
+        function handleCategorySelected(index, id){
+            console.log('handleCategorySelected', index, id)
+            const newCategoryCopy = [...categories]
+            newCategoryCopy[index] = id;
 
-        //     setNewDebtCategory(newCategoryCopy);
-        // }
+            setNewDebtCategory(newCategoryCopy);
+        }
 
     
 
@@ -194,125 +194,3 @@ const GroupPage = (props) => {
 }
 
 export default GroupPage;
-
-// function AddGroupDebt(props){
-//     const [debt, setDebt] = useState({});
-//     const [categoryId, setCategoryId] = useState();
-//     const navigatePush = useNavigate();
-
-    
-    
-//     const exitForm = () => {
-
-//         // setShowGroupForm(true),
-//         // setDisplayGroups(false)
-//         // const [showGroupForm, setShowGroupForm] = useState(false);
-//         // const [displayGroups, setDisplayGroups] = useState(true);
-//         navigatePush(`/group`);
-//     };
-
-//     function handleInput(ev){
-        
-//         if(ev.target.name.startsWith('payer-')){
-//             const id = ev.target.name.split('-')[1];
-//             setDebt({
-//                 ...debt, 
-//                 payers: {
-//                   ...debt.payers,
-//                   [id]: ev.target.value  
-//                 }
-//             });
-//         } else{
-//             setDebt({
-//                 ...debt, 
-//                 [ev.target.name]: ev.target.value
-                
-//             });
-//         }
-//     }
-
-//     const handleSubmit = (v) => {
-
-//         console.log('handlesubmit')
-//         v.preventDefault();
-
-//         axios.post(`${BASE_URL}/postgroupdebt`, {
-//             ...debt,
-//             groupId: props.groupId
-//         })
-//         .then( res => {
-//             console.log('res update group', res.data)
-//             exitForm();
-//         })
-//         .catch(err => {
-//             console.error('Error submitting data:', err)
-//         })
-
-        
-
-//     };
-
-
-//     return(
-//         <div className="proupPaymentContainer">
-//             <div className="proupPaymentwrapper">
-//             <button onClick={exitForm}> EXIT </button>
-//                 <form onSubmit={handleSubmit}>
-//                     <input className="proupPaymentinput"
-//                     onChange={handleInput}
-//                     name="description"
-//                     type="text"
-//                     placeholder='Enter Description'
-                
-//                     />
-//                     <input className="proupPaymentinput"
-//                     onChange={handleInput}
-//                     name="totalAmount"
-//                     type="text"
-//                     placeholder='Total $USD'
-                
-//                     />
-//                     <div>
-//                         <select defaultValue={-1} name="category" onChange={handleInput} >
-//                             <option value={-1} disabled > Category </option>
-//                             {
-//                                 props.categories.map( (c) => (
-//                                 <option value={c._id} key={c._id}>{c.categoryName}</option> 
-//                                 )
-//                                 )
-//                             }
-
-
-//                         </select>
-//                     </div>
-//                     <div>
-//                         {
-
-                            
-//                             props.members.map((r) => 
-//                                 <div className="groupMember" key={r._id}>
-//                                     <div className="groupMemberContainer"> 
-//                                         <p>{r.name}</p>
-//                                     <input 
-//                                         className="proupPaymentinput"
-//                                         onChange={ handleInput} 
-//                                         name={`payer-${r._id}`}
-//                                         type="text"
-//                                         placeholder="$USD"
-//                                     />
-//                                     </div>  
-//                                 </div>
-//                             )
-
-                        
-//                         }
-//                     </div>
-//                     <button> Submit Payment </button>
-//                 </form>
-//             </div>
-//         </div>
-//     )
-    
-// }// end of AddGroupDebt
-
-

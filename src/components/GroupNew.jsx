@@ -2,7 +2,7 @@ import React from "react";
 import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -40,7 +40,7 @@ const GroupNew = (props) => {
 
     const currentUser = props.user;
     console.log(currentUser);
-    // const [filteredGroups, setFilteredGroups] = useState([]);
+    const [filteredGroups, setFilteredGroups] = useState([]);
     // const [key, setKey] = useState([]);
     const navigatePush = useNavigate();
     // const [group, setGroup] = useState();
@@ -51,7 +51,7 @@ const GroupNew = (props) => {
     // const [newUserGroup, setNewUserGroup] = useState([]);
     const [groupMembers, setGroupMembers] = useState([]);
 
-
+    console.log(filteredGroups, groups)
     useEffect( (ev) => {
    
         // setFilteredGroups(currentUser.groups);
@@ -61,8 +61,8 @@ const GroupNew = (props) => {
 
         .then( res => {
             setGroups(res.data)
-            // setFilteredGroups(res.data);
-            console.log('groups', groups);
+            setFilteredGroups(res.data);
+            // console.log('groups', groups);
 
         })
         .catch(err => {
@@ -80,7 +80,7 @@ const GroupNew = (props) => {
             console.warn(err)
         })
       
-    }, [groups]);
+    }, []);
 
     function handleGroupMemeberSelected(index, id){
         // console.log('handleGroupMemeberSelected', index, id )
@@ -91,7 +91,7 @@ const GroupNew = (props) => {
         membersCopy[index] = id;
         
         //Remove duplicates
-       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) === id);
+       const unquieMemebers = membersCopy.filter((val,id, membersCopy) => membersCopy.indexOf(val) == id);
 
        // setting the arrays as Group Members
         setGroupMembers(unquieMemebers);

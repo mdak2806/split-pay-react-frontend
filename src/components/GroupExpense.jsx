@@ -10,11 +10,11 @@ function GroupExpense (props){
     // const [categoryId, setCategoryId] = useState();
     const navigatePush = useNavigate();
     const [categories, setCategories] = useState([]);
-    // const [group, setGroup] = useState();
+    const [group, setGroup] = useState();
     const [members, setMembers] = useState([]);
     // const [newMembers, setNewMembers] = useState([]);
 
-
+    console.log(group)
 
     // Get the params for group ID
     const { id } = useParams();
@@ -25,7 +25,7 @@ function GroupExpense (props){
         
         axios.get(`${BASE_URL}/groups/${id}`)
         .then(res => {
-            // setGroup(res.data)
+            setGroup(res.data)
             // set member and exclude Current USER
             setMembers(res.data.users.filter((i) => i._id !== props.user._id))
 
@@ -48,7 +48,7 @@ function GroupExpense (props){
 
       
 
-    }, [id, props.user._id])
+    }, [props.user])
     
     const exitForm = () => {
 
