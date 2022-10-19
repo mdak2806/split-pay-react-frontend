@@ -681,3 +681,18 @@
   text-decoration: none;
   color: #242c50;
 }
+.contactContainer{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  color: #242c50;
+}
+.contactInfo{
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  color: #242c50;
+}
+.contactInfo h3{
+  margin-top: 0;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import '../App.css';
 import Group from "./Group";
-import User from "./User";
+import Contact from "./Contact";
 import Payment from "./Payment";
 import Login from './Login';
 import MyProfile from './MyProfile';
@@ -112,7 +112,7 @@ function Home ( props ){
                 <Routes>
                     {currentUser && 
                     <>
-                    <Route path="/user" element={<User user={currentUser} {...useState}/>} />
+                    <Route path="/contact" element={<Contact/>} />
                     
                     <Route path="/group" element={<Group setGroupMembers={groupMembers} user={currentUser} {...useState}/>} />
 
