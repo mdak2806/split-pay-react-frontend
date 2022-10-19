@@ -6,15 +6,15 @@ import { request } from '../utils/request'
 import { useNavigate } from "react-router-dom";
 
 const PaymentPage = (props) => {
-    const [payment, setPayment] = useState(null);
+    // const [payment, setPayment] = useState(null);
     const navigatePush = useNavigate();
 
-
+    // console.log(payment);
     const { id } = useParams();
 
     useEffect(() => {
         request().get('/payment').then(response => {
-            setPayment(response.data.find(payment => payment._id === id))
+            // setPayment(response.data.find(payment => payment._id === id))
         })
         
 
