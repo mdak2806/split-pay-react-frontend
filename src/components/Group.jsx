@@ -28,8 +28,6 @@ const Group = (props) => {
         })
         .catch(err => {
             console.warn(err)
-            console.log(currentUser);
-            console.log(users);
         })
         
         // Users DATA to be able to map over for the filter
@@ -43,7 +41,7 @@ const Group = (props) => {
             console.warn(err)
         })
       
-    }, []);
+    }, [currentUser, users]);
 
     function handleGroupShow(id, e){
         navigatePush(`/groups/${id}`);
