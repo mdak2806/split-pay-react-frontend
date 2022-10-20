@@ -40,7 +40,7 @@ const Payment = (props) => {
         .then( res => {
             // setUsers(res.data)
             setFilteredPayments(res.data)
-            console.log(res.data);
+            // console.log(res.data);
 
         })
         .catch(err => {

@@ -12,12 +12,12 @@ function GroupExpense (props){
     const [group, setGroup] = useState();
     const [members, setMembers] = useState([]);
 
-    console.log(group)
+    // console.log(group)
 
     // Get the params for group ID
     const { id } = useParams();
 
-    console.log('groupId', props.groupId)
+    // console.log('groupId', props.groupId)
     
     useEffect(  () => {
         
@@ -37,7 +37,7 @@ function GroupExpense (props){
 
         .then(res => {
             setCategories(res.data)
-            console.log('categories', res.data)
+            // console.log('categories', res.data)
         })
         .catch(err => {
             console.warn(err)
@@ -85,7 +85,7 @@ function GroupExpense (props){
             users: group
         })
         .then( res => {
-            console.log('res update group', res.data)
+            // console.log('res update group', res.data)
             exitForm();
         })
         .catch(err => {

@@ -6,16 +6,14 @@ import axios from "axios";
 const BASE_URL = 'http://localhost:3000'
 
 const GroupPage = (props) => {
-    const params = useParams();
-    const [group, setGroup] = useState();
-    const currentUser = props.user;
+    // const currentUser = props.user;
     const navigatePush = useNavigate();
     const [groupDebts, setGroupDebts] = useState([]);
-    const [categories, setCategories] = useState([]);
-    const [newDebtCategory, setNewDebtCategory] = useState()
-    const payee = currentUser._id;
+    // const [categories, setCategories] = useState([]);
+    // const [newDebtCategory, setNewDebtCategory] = useState()
+    // const payee = currentUser._id;
     const [members, setMembers] = useState([]);
-    console.log(params, group, newDebtCategory, payee)
+    // console.log(params, group, newDebtCategory, payee)
 
     const { id } = useParams();
 
@@ -24,7 +22,7 @@ const GroupPage = (props) => {
         
         axios.get(`${BASE_URL}/groups/${id}`)
         .then(res => {
-            setGroup(res.data)
+            // setGroup(res.data)
             setGroupDebts(res.data.groupDebts);
             setMembers(res.data.users);
 
@@ -34,15 +32,15 @@ const GroupPage = (props) => {
         })
 
         
-        axios.get (`${BASE_URL}/categories`)
+        // axios.get (`${BASE_URL}/categories`)
 
-        .then(res => {
-            setCategories(res.data)
-            // console.log('categories', res.data)
-        })
-        .catch(err => {
-            console.warn(err)
-        })
+        // .then(res => {
+        //     setCategories(res.data)
+        //     // console.log('categories', res.data)
+        // })
+        // .catch(err => {
+        //     console.warn(err)
+        // })
 
 
       
@@ -54,15 +52,15 @@ const GroupPage = (props) => {
         navigatePush(`/group`);
     }
          
-    function handleCategorySelected(index, id){
-        console.log('handleCategorySelected', index, id)
-        const newCategoryCopy = [...categories]
-        newCategoryCopy[index] = id;
+    // function handleCategorySelected(index, id){
+    //     // console.log('handleCategorySelected', index, id)
+    //     const newCategoryCopy = [...categories]
+    //     newCategoryCopy[index] = id;
 
-        setNewDebtCategory(newCategoryCopy);
-    }
+    //     setNewDebtCategory(newCategoryCopy);
+    // }
 
-        console.log(handleCategorySelected);
+        // console.log(handleCategorySelected);
     
 
         const renderForm = () => {
