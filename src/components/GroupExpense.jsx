@@ -81,7 +81,8 @@ function GroupExpense (props){
 
         axios.post(`${BASE_URL}/postgroupdebt`, {
             ...debt,
-            groupId: id
+            groupId: id, 
+            users: group
         })
         .then( res => {
             console.log('res update group', res.data)

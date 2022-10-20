@@ -38,7 +38,7 @@ const GroupPage = (props) => {
 
         .then(res => {
             setCategories(res.data)
-            console.log('categories', res.data)
+            // console.log('categories', res.data)
         })
         .catch(err => {
             console.warn(err)
