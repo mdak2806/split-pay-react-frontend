@@ -28,6 +28,8 @@ const Group = (props) => {
         })
         .catch(err => {
             console.warn(err)
+            console.log(currentUser);
+            console.log(users);
         })
         
         // Users DATA to be able to map over for the filter
