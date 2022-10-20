@@ -682,6 +682,8 @@
   color: #242c50;
 }
 .contactContainer{
+  margin-top: 120px;
+  margin-bottom: 90px;
   text-align: center;
   align-items: center;
   justify-content: center;
