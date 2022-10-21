@@ -3,7 +3,13 @@ import '../App.css';
 import axios from 'axios';
 import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-const BASE_URL = 'http://localhost:3000'
+// const BASE_URL = 'http://localhost:3000'
+let BASE_URL = 'http://localhost:3000';
+if( process.env.NODE_ENV === 'development'){
+    BASE_URL = 'http://localhost:3000';
+} else {
+    BASE_URL = 'https://split-pay-app-mw.herokuapp.com';
+} // end rails deployment if-else
 // const GroupDropdown = (props) => {
 //     return (
 //         <div>

@@ -19,7 +19,13 @@ import { HashRouter as Router, Link, Route, Routes } from "react-router-dom";
 import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 
 
-let BASE_URL ='http://localhost:3000'
+// let BASE_URL ='http://localhost:3000'
+let BASE_URL = 'http://localhost:3000';
+if( process.env.NODE_ENV === 'development'){
+    BASE_URL = 'http://localhost:3000';
+} else {
+    BASE_URL = 'https://split-pay-app-mw.herokuapp.com';
+} // end rails deployment if-else
 function Home ( props ){
 
     const [currentUser, setCurrentUser] = useState(null);
