@@ -47,7 +47,7 @@ const Group = (props) => {
             console.warn(err)
         })
       
-    }, [currentUser, users]);
+    }, []);
 
     function handleGroupShow(id, e){
         navigatePush(`/groups/${id}`);
