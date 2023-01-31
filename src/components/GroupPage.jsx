@@ -63,8 +63,6 @@ const GroupPage = (props) => {
     //     const newCategoryCopy = [...categories]
     //     newCategoryCopy[index] = id;
 
-    //     setNewDebtCategory(newCategoryCopy);
-    // }
 
         // console.log(handleCategorySelected);
     

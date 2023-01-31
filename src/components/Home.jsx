@@ -31,6 +31,8 @@ function Home ( props ){
     const [currentUser, setCurrentUser] = useState(null);
     const groupMembers = props.groupMembers;
 
+    console.log(currentUser);
+
     // useEffect not usedEffect (might cause errors down the line)
     useEffect( () => {
         fetchUser();
