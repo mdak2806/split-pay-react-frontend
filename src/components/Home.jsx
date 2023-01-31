@@ -24,7 +24,7 @@ let BASE_URL = 'http://localhost:3000';
 if( process.env.NODE_ENV === 'development'){
     BASE_URL = 'http://localhost:3000';
 } else {
-    BASE_URL = 'https://split-pay-app-mw.herokuapp.com';
+    BASE_URL = 'https://split-pay-backend.herokuapp.com';
 } // end rails deployment if-else
 function Home ( props ){
 
