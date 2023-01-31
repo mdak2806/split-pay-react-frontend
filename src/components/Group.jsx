@@ -39,13 +39,14 @@ const Group = (props) => {
         // Users DATA to be able to map over for the filter
         axios.get(`${BASE_URL}/users`)
 
-        .then( res => {
-            setUsers(res.data)
+        // .then( res => {
+        //     setUsers(res.data)
 
-        })
-        .catch(err => {
-            console.warn(err)
-        })
+        // })
+        // .catch(err => {
+        //     console.warn(err)
+        // })
+        // [currentUser, users]
       
     }, []);
 
