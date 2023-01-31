@@ -14,9 +14,9 @@ if( process.env.NODE_ENV === 'development'){
 
 const Group = (props) => {
 
-    const currentUser = props.user;
+    // const currentUser = props.user;
     const navigatePush = useNavigate();
-    const [users, setUsers] = useState([]);
+    // const [users, setUsers] = useState([]);
     const [groups, setGroups] = useState([]);
 
 
@@ -37,7 +37,7 @@ const Group = (props) => {
         })
         
         // Users DATA to be able to map over for the filter
-        axios.get(`${BASE_URL}/users`)
+        // axios.get(`${BASE_URL}/users`)
 
         // .then( res => {
         //     setUsers(res.data)
