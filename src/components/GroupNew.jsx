@@ -111,6 +111,7 @@ const GroupNew = (props) => {
 
         })
         .then(res => {
+            console.log('added groupMember', groupMembers)
             navigatePush(`/group`);
         })
         .catch( err => {

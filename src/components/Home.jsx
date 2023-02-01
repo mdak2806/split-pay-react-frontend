@@ -139,6 +139,7 @@ function Home ( props ){
                     
                     <Route path="/profile" element={<MyProfile fetchUser={fetchUser} user={currentUser} {...useState}/>} /> 
                     </>}
+                    
                     <Route path="/login" element={<Login fetchUser={fetchUser} user={currentUser} {...useState}/>} />    
                     <Route path="/signup" element={<SignUp fetchUser={fetchUser} {...useState}/>} />    
                      
